@@ -1,4 +1,4 @@
-<p>I'm a student who is enthusiastic about making the world more developed, making innovations to raise individuals, and building a community of creative people. A few languages I enjoy working with include Python (Django, Tensorflow, Keras, OpenCV, etc), Javascript (Node JS, React JS, etc), c++ and PHP. I adore creating artificial intelligence systems alot and wants to make the everyday life of a human being more effective by making AI work side by side with us.</p>
+<p>I'm a AI Researcher and Full Stack Developer who is enthusiastic about making the world more developed, making innovations to raise individuals, and building a community of creative people. A few languages I enjoy working with include Python (Django, Tensorflow, PyTorch, Keras, OpenCV, etc), Javascript (Node JS, React JS, etc), C++, JavaSwing, JavaFX, Assembly, R and PHP. I adore creating artificial intelligence systems alot and wants to make the everyday life of a human being more effective by making AI work side by side with us.</p>
 
 ## 😊 Profile
 Property                 | Data  
@@ -28,22 +28,22 @@ Reach Me                 | [![Gmail Badge](https://img.shields.io/badge/-asadabb
 **I'm a Night 🦉** 
 
 ```text
-🌞 Morning    141 commits     ███░░░░░░░░░░░░░░░░░░░░░░   8.64% 
-🌆 Daytime    183 commits     ████░░░░░░░░░░░░░░░░░░░░░   12.65% 
-🌃 Evening    272 commits     ██████░░░░░░░░░░░░░░░░░░░   25.62%
-🌙 Night      529 commits     █████████████░░░░░░░░░░░░   53.09% 
+🌞 Morning    31 commits     ███░░░░░░░░░░░░░░░░░░░░░░   8.64% 
+🌆 Daytime    45 commits     ████░░░░░░░░░░░░░░░░░░░░░   12.65% 
+🌃 Evening    92 commits     ██████░░░░░░░░░░░░░░░░░░░   25.62%
+🌙 Night     190 commits     █████████████░░░░░░░░░░░░   53.09% 
 
 ```
 📅 **I'm Most Productive on Sunday** 
 
 ```text
-Monday       155 commits     ████░░░░░░░░░░░░░░░░░░░░░   18.71% 
-Tuesday      123 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   7.82% 
-Wednesday    125 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   8.5% 
-Thursday     114 commits     █░░░░░░░░░░░░░░░░░░░░░░░░   4.76% 
-Friday       116 commits     █░░░░░░░░░░░░░░░░░░░░░░░░   5.44% 
-Saturday     270 commits     ██████░░░░░░░░░░░░░░░░░░░   23.81% 
-Sunday       291 commits     ███████░░░░░░░░░░░░░░░░░░   30.95%
+Monday       34 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   9.5%  
+Tuesday      85 commits     █████░░░░░░░░░░░░░░░░░░░░   23.74%  
+Wednesday    37 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   10.34%  
+Thursday     83 commits     █████░░░░░░░░░░░░░░░░░░░░   23.18%  
+Friday       20 commits     █░░░░░░░░░░░░░░░░░░░░░░░░   5.59%  
+Saturday     38 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   10.61%  
+Sunday       61 commits     █████░░░░░░░░░░░░░░░░░░░░   17.04%  
 
 ```
 
