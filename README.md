@@ -63,6 +63,6 @@ Sunday       61 commits     █████░░░░░░░░░░░░�
 - 📝 Solving Bugs, Compiling Code
 - 🎯 Goal : To be a better Developer 
 - 💌 Fun Facts : 
-    - Loves food but can't' cook 🐼 
+    - Loves foooood and cookinggggg 🐼 
     - Overthinks thinking to not to overthink 🙂
     - Bonita la vida! ( Ahh, Learning Spanish out of curiosity ) 🙃
