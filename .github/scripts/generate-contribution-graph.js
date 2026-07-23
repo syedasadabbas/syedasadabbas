@@ -48,6 +48,17 @@ function round(num) {
   return Math.round(num * 100) / 100;
 }
 
+// CRITICAL: Escape XML special chars. A bare & (e.g. "Research & Work")
+// makes the SVG invalid XML, which GitHub rejects with "Invalid image source".
+function escapeXml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 async function getCurrentYearContributions(username) {
   console.log(`    📡 Fetching current year data...`);
   const query = `
@@ -261,7 +272,7 @@ function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTot
 
 <rect width="${width}" height="${height}" class="bg"/>
 
-<text x="${round(width / 2)}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
+<text x="${round(width / 2)}" y="35" class="title" text-anchor="middle">📊 ${escapeXml(ACCOUNT_COLORS[account].name)} (@${escapeXml(account)})</text>
 <text x="${round(width / 2)}" y="55" class="subtitle" text-anchor="middle">All-Time: ${totalAllTime} commits (${weekCount} weeks) | Current Year: ${currentYearTotal} | ${yearsSinceCreation}y since ${accountCreated}</text>`;
 
   // Y-axis
@@ -298,7 +309,7 @@ function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTot
     }
     svg += `\n<path d="${pathData}" class="line"/>`;
 
-    // Points and labels
+    // Points and selective labels (not every point to avoid congestion)
     weeklyData.forEach((val, i) => {
       const x = padding.left + (i / weekCount) * plotWidth;
       const y = padding.top + plotHeight - (val / yMax) * plotHeight;
@@ -307,7 +318,8 @@ function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTot
       
       svg += `\n<circle cx="${xRounded}" cy="${yRounded}" r="4" class="point"/>`;
       
-      if (val > 0) {
+      // Label only: peaks, every Nth point, or significant values
+      if (val > 0 && (val === maxValue || i % Math.max(1, Math.ceil(weekCount / 10)) === 0 || val > yMax * 0.6)) {
         svg += `\n<text x="${xRounded}" y="${round(yRounded - 12)}" class="point-label" text-anchor="middle">${val}</text>`;
       }
     });
