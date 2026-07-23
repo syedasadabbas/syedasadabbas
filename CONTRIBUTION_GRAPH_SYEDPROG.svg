@@ -1,131 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
-  <defs>
-    <style>
-      .title { font-size: 22px; font-weight: bold; fill: #FFA500; }
-      .subtitle { font-size: 14px; fill: #8b949e; }
-      .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-      .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-      .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-      .axis-line { stroke: #30363d; stroke-width: 2; }
-      .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-      .point { fill: #FFA500; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
-      .bg { fill: #0d1117; }
-      .error-text { font-size: 14px; fill: #ff6b6b; font-weight: bold; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400">
+<style>
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .title { font-size: 18px; font-weight: bold; fill: #FFA500; }
+  .label { font-size: 11px; fill: #666; }
+  .value { font-size: 10px; fill: #333; font-weight: bold; }
+  .grid { stroke: #eee; stroke-width: 0.5; }
+  .line { stroke: #FFA500; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .point { fill: #FFA500; }
+</style>
 
-  <!-- Background -->
-  <rect width="1200" height="500" class="bg"/>
+<!-- Background -->
+<rect width="1000" height="400" fill="white"/>
 
-  <!-- Title -->
-  <text x="600" y="35" class="title" text-anchor="middle">📊 Research & Work (@syedprog)</text>
-  <text x="600" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: 197 commits</text>
-  <line x1="100" y1="420" x2="1160" y2="420" class="grid-line"/>
-  <text x="90" y="425" class="axis-label" text-anchor="end">0</text>
-  <line x1="100" y1="375" x2="1160" y2="375" class="grid-line"/>
-  <text x="90" y="380" class="axis-label" text-anchor="end">3</text>
-  <line x1="100" y1="330" x2="1160" y2="330" class="grid-line"/>
-  <text x="90" y="335" class="axis-label" text-anchor="end">6</text>
-  <line x1="100" y1="285" x2="1160" y2="285" class="grid-line"/>
-  <text x="90" y="290" class="axis-label" text-anchor="end">9</text>
-  <line x1="100" y1="240" x2="1160" y2="240" class="grid-line"/>
-  <text x="90" y="245" class="axis-label" text-anchor="end">12</text>
-  <line x1="100" y1="195" x2="1160" y2="195" class="grid-line"/>
-  <text x="90" y="200" class="axis-label" text-anchor="end">15</text>
-  <line x1="100" y1="150" x2="1160" y2="150" class="grid-line"/>
-  <text x="90" y="155" class="axis-label" text-anchor="end">18</text>
-  <line x1="100" y1="105" x2="1160" y2="105" class="grid-line"/>
-  <text x="90" y="110" class="axis-label" text-anchor="end">21</text>
-  <line x1="100" y1="60" x2="1160" y2="60" class="grid-line"/>
-  <text x="90" y="65" class="axis-label" text-anchor="end">24</text>
-  <line x1="100" y1="420" x2="100" y2="425" class="grid-line"/>
-  <text x="100" y="445" class="axis-label" text-anchor="middle">W0</text>
-  <line x1="180" y1="420" x2="180" y2="425" class="grid-line"/>
-  <line x1="260" y1="420" x2="260" y2="425" class="grid-line"/>
-  <text x="260" y="445" class="axis-label" text-anchor="middle">W8</text>
-  <line x1="340" y1="420" x2="340" y2="425" class="grid-line"/>
-  <line x1="420" y1="420" x2="420" y2="425" class="grid-line"/>
-  <text x="420" y="445" class="axis-label" text-anchor="middle">W16</text>
-  <line x1="500.00000000000006" y1="420" x2="500.00000000000006" y2="425" class="grid-line"/>
-  <line x1="580" y1="420" x2="580" y2="425" class="grid-line"/>
-  <text x="580" y="445" class="axis-label" text-anchor="middle">W24</text>
-  <line x1="660" y1="420" x2="660" y2="425" class="grid-line"/>
-  <line x1="740" y1="420" x2="740" y2="425" class="grid-line"/>
-  <text x="740" y="445" class="axis-label" text-anchor="middle">W32</text>
-  <line x1="820" y1="420" x2="820" y2="425" class="grid-line"/>
-  <line x1="900.0000000000001" y1="420" x2="900.0000000000001" y2="425" class="grid-line"/>
-  <text x="900.0000000000001" y="445" class="axis-label" text-anchor="middle">W40</text>
-  <line x1="980" y1="420" x2="980" y2="425" class="grid-line"/>
-  <line x1="1060" y1="420" x2="1060" y2="425" class="grid-line"/>
-  <text x="1060" y="445" class="axis-label" text-anchor="middle">W48</text>
-  <line x1="1140" y1="420" x2="1140" y2="425" class="grid-line"/>
-  <path d="M100,390 L120,405 L140,405 L160,390 L180,405 L200,405 L220,390 L240,315 L260,360 L280,330 L300,375 L320,360 L340,405 L360,360 L380,405 L400,360 L420,405 L440,390 L460,360 L480,405 L500.00000000000006,315 L520,255 L540,390 L560,345 L580,360 L600,75 L620,405 L640,405 L660,360 L680,225 L700,300 L720,330 L740,315 L760,225 L780,270 L800,240 L820,300 L840,405 L860,285 L880,420 L900.0000000000001,420 L920,420 L940,420 L960,420 L980,420 L1000,420 L1020,420 L1040,420 L1060,420 L1080,420 L1100,420 L1120,420 L1140,420" class="line" stroke="#FFA500"/>
-  <circle cx="100" cy="390" r="5" class="point"/>
-  <text x="100" y="378" class="value-label" text-anchor="middle">2</text>
-  <circle cx="120" cy="405" r="5" class="point"/>
-  <circle cx="140" cy="405" r="5" class="point"/>
-  <circle cx="160" cy="390" r="5" class="point"/>
-  <circle cx="180" cy="405" r="5" class="point"/>
-  <circle cx="200" cy="405" r="5" class="point"/>
-  <circle cx="220" cy="390" r="5" class="point"/>
-  <circle cx="240" cy="315" r="5" class="point"/>
-  <circle cx="260" cy="360" r="5" class="point"/>
-  <text x="260" y="348" class="value-label" text-anchor="middle">4</text>
-  <circle cx="280" cy="330" r="5" class="point"/>
-  <circle cx="300" cy="375" r="5" class="point"/>
-  <circle cx="320" cy="360" r="5" class="point"/>
-  <circle cx="340" cy="405" r="5" class="point"/>
-  <circle cx="360" cy="360" r="5" class="point"/>
-  <circle cx="380" cy="405" r="5" class="point"/>
-  <circle cx="400" cy="360" r="5" class="point"/>
-  <circle cx="420" cy="405" r="5" class="point"/>
-  <text x="420" y="393" class="value-label" text-anchor="middle">1</text>
-  <circle cx="440" cy="390" r="5" class="point"/>
-  <circle cx="460" cy="360" r="5" class="point"/>
-  <circle cx="480" cy="405" r="5" class="point"/>
-  <circle cx="500.00000000000006" cy="315" r="5" class="point"/>
-  <circle cx="520" cy="255" r="5" class="point"/>
-  <circle cx="540" cy="390" r="5" class="point"/>
-  <circle cx="560" cy="345" r="5" class="point"/>
-  <circle cx="580" cy="360" r="5" class="point"/>
-  <text x="580" y="348" class="value-label" text-anchor="middle">4</text>
-  <circle cx="600" cy="75" r="5" class="point"/>
-  <text x="600" y="63" class="value-label" text-anchor="middle">23</text>
-  <circle cx="620" cy="405" r="5" class="point"/>
-  <circle cx="640" cy="405" r="5" class="point"/>
-  <circle cx="660" cy="360" r="5" class="point"/>
-  <circle cx="680" cy="225" r="5" class="point"/>
-  <circle cx="700" cy="300" r="5" class="point"/>
-  <circle cx="720" cy="330" r="5" class="point"/>
-  <circle cx="740" cy="315" r="5" class="point"/>
-  <text x="740" y="303" class="value-label" text-anchor="middle">7</text>
-  <circle cx="760" cy="225" r="5" class="point"/>
-  <circle cx="780" cy="270" r="5" class="point"/>
-  <circle cx="800" cy="240" r="5" class="point"/>
-  <circle cx="820" cy="300" r="5" class="point"/>
-  <circle cx="840" cy="405" r="5" class="point"/>
-  <circle cx="860" cy="285" r="5" class="point"/>
-  <circle cx="880" cy="420" r="5" class="point"/>
-  <circle cx="900.0000000000001" cy="420" r="5" class="point"/>
-  <circle cx="920" cy="420" r="5" class="point"/>
-  <circle cx="940" cy="420" r="5" class="point"/>
-  <circle cx="960" cy="420" r="5" class="point"/>
-  <circle cx="980" cy="420" r="5" class="point"/>
-  <circle cx="1000" cy="420" r="5" class="point"/>
-  <circle cx="1020" cy="420" r="5" class="point"/>
-  <circle cx="1040" cy="420" r="5" class="point"/>
-  <circle cx="1060" cy="420" r="5" class="point"/>
-  <circle cx="1080" cy="420" r="5" class="point"/>
-  <circle cx="1100" cy="420" r="5" class="point"/>
-  <circle cx="1120" cy="420" r="5" class="point"/>
-  <circle cx="1140" cy="420" r="5" class="point"/>
-  <line x1="100" y1="60" x2="100" y2="420" class="axis-line"/>
-  <line x1="100" y1="420" x2="1160" y2="420" class="axis-line"/>
-  <text x="30" y="240" class="axis-label" text-anchor="middle" transform="rotate(-90 30 240)">Commits per Week (3-point scale)</text>
-  <text x="630" y="485" class="axis-label" text-anchor="middle">Time Period (Weekly Intervals - 7 days)</text>
-  <rect x="100" y="470" width="350" height="60" fill="#161b22" stroke="#30363d" stroke-width="1" rx="4"/>
-  <text x="110" y="490" class="subtitle" font-size="12">📊 Statistics</text>
-  <text x="110" y="505" class="value-label" font-size="11">Total Commits: 197 | Weeks of Data: 53 | Avg/Week: 4</text>
-  <text x="1190" y="490" class="axis-label" text-anchor="end" font-size="11">Generated: 2026-07-23</text>
-</svg>
+<!-- Title -->
+<text x="500" y="25" class="title" text-anchor="middle">Research & Work</text>
+<text x="500" y="37" class="label" text-anchor="middle">Total: 197 commits</text>
+<line x1="80" y1="340" x2="980" y2="340" class="grid"/><text x="75" y="343" class="label" text-anchor="end">0</text><line x1="80" y1="280" x2="980" y2="280" class="grid"/><text x="75" y="283" class="label" text-anchor="end">5</text><line x1="80" y1="220" x2="980" y2="220" class="grid"/><text x="75" y="223" class="label" text-anchor="end">10</text><line x1="80" y1="160" x2="980" y2="160" class="grid"/><text x="75" y="163" class="label" text-anchor="end">15</text><line x1="80" y1="100" x2="980" y2="100" class="grid"/><text x="75" y="103" class="label" text-anchor="end">20</text><line x1="80" y1="40" x2="980" y2="40" class="grid"/><text x="75" y="43" class="label" text-anchor="end">25</text><text x="530" y="395" class="label" text-anchor="middle">Weeks (all-time)</text><path d="M 80 316 L 96.98113207547169 328 L 113.9622641509434 328 L 130.9433962264151 316 L 147.9245283018868 328 L 164.90566037735852 328 L 181.8867924528302 316 L 198.8679245283019 256 L 215.8490566037736 292 L 232.83018867924528 268 L 249.811320754717 304 L 266.7924528301887 292 L 283.7735849056604 328 L 300.7547169811321 292 L 317.7358490566038 328 L 334.7169811320755 292 L 351.6981132075472 328 L 368.6792452830189 316 L 385.66037735849056 292 L 402.64150943396226 328 L 419.622641509434 256 L 436.6037735849057 208 L 453.5849056603774 316 L 470.5660377358491 280 L 487.54716981132077 292 L 504.52830188679246 64 L 521.5094339622642 328 L 538.4905660377358 328 L 555.4716981132076 292 L 572.4528301886792 184 L 589.433962264151 244 L 606.4150943396227 268 L 623.3962264150944 256 L 640.377358490566 184 L 657.3584905660377 220 L 674.3396226415094 196 L 691.3207547169811 244 L 708.3018867924528 328 L 725.2830188679245 232 L 742.2641509433962 340 L 759.245283018868 340 L 776.2264150943397 340 L 793.2075471698114 340 L 810.1886792452831 340 L 827.1698113207548 340 L 844.1509433962265 340 L 861.1320754716982 340 L 878.1132075471698 340 L 895.0943396226415 340 L 912.0754716981132 340 L 929.0566037735849 340 L 946.0377358490566 340 L 963.0188679245283 340" class="line"/><circle cx="80" cy="316" r="2" class="point"/><text x="80" y="308" class="value" text-anchor="middle">2</text><circle cx="96.98113207547169" cy="328" r="2" class="point"/><circle cx="113.9622641509434" cy="328" r="2" class="point"/><circle cx="130.9433962264151" cy="316" r="2" class="point"/><circle cx="147.9245283018868" cy="328" r="2" class="point"/><circle cx="164.90566037735852" cy="328" r="2" class="point"/><circle cx="181.8867924528302" cy="316" r="2" class="point"/><circle cx="198.8679245283019" cy="256" r="2" class="point"/><circle cx="215.8490566037736" cy="292" r="2" class="point"/><circle cx="232.83018867924528" cy="268" r="2" class="point"/><circle cx="249.811320754717" cy="304" r="2" class="point"/><circle cx="266.7924528301887" cy="292" r="2" class="point"/><circle cx="283.7735849056604" cy="328" r="2" class="point"/><circle cx="300.7547169811321" cy="292" r="2" class="point"/><text x="300.7547169811321" y="284" class="value" text-anchor="middle">4</text><circle cx="317.7358490566038" cy="328" r="2" class="point"/><circle cx="334.7169811320755" cy="292" r="2" class="point"/><circle cx="351.6981132075472" cy="328" r="2" class="point"/><circle cx="368.6792452830189" cy="316" r="2" class="point"/><circle cx="385.66037735849056" cy="292" r="2" class="point"/><circle cx="402.64150943396226" cy="328" r="2" class="point"/><circle cx="419.622641509434" cy="256" r="2" class="point"/><circle cx="436.6037735849057" cy="208" r="2" class="point"/><circle cx="453.5849056603774" cy="316" r="2" class="point"/><circle cx="470.5660377358491" cy="280" r="2" class="point"/><circle cx="487.54716981132077" cy="292" r="2" class="point"/><circle cx="504.52830188679246" cy="64" r="2" class="point"/><text x="504.52830188679246" y="56" class="value" text-anchor="middle">23</text><circle cx="521.5094339622642" cy="328" r="2" class="point"/><text x="521.5094339622642" y="320" class="value" text-anchor="middle">1</text><circle cx="538.4905660377358" cy="328" r="2" class="point"/><circle cx="555.4716981132076" cy="292" r="2" class="point"/><circle cx="572.4528301886792" cy="184" r="2" class="point"/><circle cx="589.433962264151" cy="244" r="2" class="point"/><circle cx="606.4150943396227" cy="268" r="2" class="point"/><circle cx="623.3962264150944" cy="256" r="2" class="point"/><circle cx="640.377358490566" cy="184" r="2" class="point"/><circle cx="657.3584905660377" cy="220" r="2" class="point"/><circle cx="674.3396226415094" cy="196" r="2" class="point"/><circle cx="691.3207547169811" cy="244" r="2" class="point"/><circle cx="708.3018867924528" cy="328" r="2" class="point"/><circle cx="725.2830188679245" cy="232" r="2" class="point"/><circle cx="742.2641509433962" cy="340" r="2" class="point"/><circle cx="759.245283018868" cy="340" r="2" class="point"/><circle cx="776.2264150943397" cy="340" r="2" class="point"/><circle cx="793.2075471698114" cy="340" r="2" class="point"/><circle cx="810.1886792452831" cy="340" r="2" class="point"/><circle cx="827.1698113207548" cy="340" r="2" class="point"/><circle cx="844.1509433962265" cy="340" r="2" class="point"/><circle cx="861.1320754716982" cy="340" r="2" class="point"/><circle cx="878.1132075471698" cy="340" r="2" class="point"/><circle cx="895.0943396226415" cy="340" r="2" class="point"/><circle cx="912.0754716981132" cy="340" r="2" class="point"/><circle cx="929.0566037735849" cy="340" r="2" class="point"/><circle cx="946.0377358490566" cy="340" r="2" class="point"/><circle cx="963.0188679245283" cy="340" r="2" class="point"/><line x1="80" y1="40" x2="80" y2="340" stroke="#333" stroke-width="1"/><line x1="80" y1="340" x2="980" y2="340" stroke="#333" stroke-width="1"/></svg>
