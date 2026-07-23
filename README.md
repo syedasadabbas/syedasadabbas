@@ -34,7 +34,7 @@
 
 ---
 
-## 🎯 About Me
+## About Me
 
 I'm a software engineer with **4+ years of experience** building production-grade full-stack applications, distributed microservices, and AI-powered systems. Currently at **Uforia Infotech Solutions** (contracted to Leadpages, Canada), I design and implement end-to-end solutions across SaaS platforms, marketing automation, and AI agent-based architectures.
 
@@ -49,7 +49,7 @@ My passion is at the intersection of **software engineering, AI automation, and 
 
 ---
 
-## 💼 Professional Experience
+## Professional Experience
 
 ### **Software Engineer II** | Uforia Infotech Solutions → Leadpages (Canada)
 *July 2025 – Present | Islamabad, Pakistan*
@@ -128,7 +128,7 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
 
 ###
 
-<h3 align="left">📊 AI/ML & Data Science</h3>
+<h3 align="left">AI/ML & Data Science</h3>
 
 ###
 
@@ -152,7 +152,7 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
 
 ###
 
-<h3 align="left">🎨 Design & Tools</h3>
+<h3 align="left">Design & Tools</h3>
 
 ###
 
@@ -181,7 +181,7 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 ### **Code Names Game Redesign** | Next.js 15, React 19, Tailwind, Socket.IO, Prisma
 Full UI/UX redesign with Figma prototyping across 14 screens. Built collaborative real-time game mechanics with WebSocket support and production-ready database schema.
@@ -208,7 +208,7 @@ Collaborated on federated learning architecture for distributed sentiment analys
 
 ---
 
-## 📊 Multi-Account GitHub Strategy
+## Multi-Account GitHub Strategy
 
 I maintain 3 strategic GitHub accounts for different purposes and project types:
 
@@ -239,36 +239,28 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
   </tr>
 </table>
 
-### 📌 Why Multiple Accounts?
-
-- **Professional Segregation**: Keep client work, research, and personal projects organized
-- **Email Management**: Different work emails across organizations
-- **Project Isolation**: Clear boundaries between contract work, research, and experimentation
-- **Security**: Compartmentalized access and credentials
-- **Portfolio Clarity**: Easy to showcase different expertise areas
-
-### 🔄 Aggregated View
+### Aggregated View
 
 **Combined Statistics from All 3 Accounts:**
-- 🌟 **Primary Languages**: Python, TypeScript, JavaScript
-- 🏗️ **Focus Areas**: Full-stack development, ML/DL, cloud infrastructure, agentic systems
+- **Primary Languages**: Python, TypeScript, JavaScript
+- **Focus Areas**: Full-stack development, ML/DL, cloud infrastructure, agentic systems
 
-> 📖 **Live commit totals, repository counts, and per-account breakdowns** are generated from the GitHub API and updated daily — see [MULTI_ACCOUNT_STATS.md](./MULTI_ACCOUNT_STATS.md).
+> **Live commit totals, repository counts, and per-account breakdowns** are generated from the GitHub API and updated daily — see [MULTI_ACCOUNT_STATS.md](./MULTI_ACCOUNT_STATS.md).
 
 ---
 
 <br/>
 
-## 📊 GitHub Statistics & Activity
+## GitHub Statistics & Activity
 
-### 📈 All Accounts Combined - Live Statistics
+### All Accounts Combined - Live Statistics
 
 <p align="center">
-  <strong>📊 View Real-Time Aggregated Statistics (Updated Daily)</strong>
+  <strong>View Real-Time Aggregated Statistics (Updated Daily)</strong>
   <br/>
   Check <a href="./MULTI_ACCOUNT_STATS.md"><strong>MULTI_ACCOUNT_STATS.md</strong></a> for comprehensive statistics from all 3 GitHub accounts.
   <br/>
-  <strong>✅ Automatically updated every 24 hours at 00:00 UTC via GitHub Actions</strong>
+  <strong>Automatically updated every 24 hours at 00:00 UTC via GitHub Actions</strong>
 </p>
 
 **What's Included:**
@@ -280,7 +272,7 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
 - ✅ **Per-account breakdown** (individual stats)  
 
 <details>
-<summary><b>📋 Detailed Statistics Breakdown</b></summary>
+<summary><b>Detailed Statistics Breakdown</b></summary>
 <br/>
 View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the complete file with real-time data including:
 - Aggregated contribution statistics
@@ -293,21 +285,6 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 <br/>
 
 ---
-
-### 📊 Combined Statistics - All 3 Accounts (Auto-Updated Daily)
-
-> **📌 All data below is dynamically fetched and updated automatically. See `MULTI_ACCOUNT_STATS.md` for source data.**
-
-#### **Primary Account (@syedasadabbas)**
-
-<a href="https://github.com/syedasadabbas">
-  <img alt="syedasadabbas GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=syedasadabbas&show_icons=true&include_all_commits=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88&hide=contribs" height="195" width="48%"/>
-</a>
-<a href="https://github.com/syedasadabbas">
-  <img alt="syedasadabbas Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=12&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="195" width="48%"/>
-</a>
-
-<br/>
 
 #### **Research & Work Account (@syedprog)**
 
@@ -333,7 +310,7 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 
 ---
 
-### 📈 Combined Contribution Activity Graph - All 3 Accounts (All-Time)
+### Combined Contribution Activity Graph - All 3 Accounts (All-Time)
 
 > **Single unified visualization showing complete contribution data from all three accounts - from account inception to present**
 
@@ -356,7 +333,7 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 
 ---
 
-### 📊 Individual Contribution Graphs - By Account
+### Individual Contribution Graphs - By Account
 
 Each account has its own graph with individual color coding and optimized scaling based on that account's commit volume.
 
@@ -365,13 +342,6 @@ Each account has its own graph with individual color coding and optimized scalin
 <div align="center">
 
 ![syedasadabbas Contribution Graph](./CONTRIBUTION_GRAPH_SYEDASADABBAS.svg)
-
-**Account Details:**
-- **Focus:** Professional & Portfolio projects
-- **Key Projects:** Code Names Game, 3D Portfolio, AI/ML
-- **Color:** Red (#FF6B6B)
-- **Data:** All-time contributions with weekly breakdown
-- **Scaling:** Optimized for this account's commit volume
 
 </div>
 
@@ -383,13 +353,6 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg)
 
-**Account Details:**
-- **Focus:** Leadpages work & research projects
-- **Key Projects:** Integration pipelines, React UI, NestJS APIs
-- **Color:** Orange (#FFA500)
-- **Data:** All-time contributions with weekly breakdown
-- **Scaling:** Optimized for this account's commit volume
-
 </div>
 
 <br/>
@@ -400,20 +363,13 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ![syedprogg Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROGG.svg)
 
-**Account Details:**
-- **Focus:** Learning & experimental projects
-- **Key Projects:** Synapsio, Hardware automation, Prototypes
-- **Color:** Gold (#FFD700)
-- **Data:** All-time contributions with weekly breakdown
-- **Scaling:** Optimized for this account's commit volume
-
 </div>
 
 <br/>
 
 ---
 
-### 📈 Graph Features & Details
+### Graph Features & Details
 
 **What Each Graph Shows:**
 - ✅ **Weekly aggregated data** - 7 days per data point
@@ -439,7 +395,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-### 📈 Combined Language Distribution (All Accounts)
+### Combined Language Distribution (All Accounts)
 
 <a href="https://github.com/syedasadabbas">
   <img alt="Combined Languages - All Accounts" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=15&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="260" width="100%"/>
@@ -462,7 +418,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-### 🔥 Combined Contribution Streaks - All Accounts
+### Combined Contribution Streaks - All Accounts
 
 <p align="center">
   <img alt="syedasadabbas Streak Stats" src="https://github-readme-streak-stats.herokuapp.com?user=syedasadabbas&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
@@ -472,26 +428,26 @@ Each account has its own graph with individual color coding and optimized scalin
 
 <br/>
 
-**📌 Note:** Streak stats above are **live and update in real-time** from GitHub contribution data. Refresh this page to see current streaks.
+**Note:** Streak stats above are **live and update in real-time** from GitHub contribution data. Refresh this page to see current streaks.
 
 <br/>
 
 ---
 
-### 🌐 Complete Contribution Timeline - All Accounts (Interactive)
+### Complete Contribution Timeline - All Accounts (Interactive)
 
 > **For complete all-time contribution calendars with interactive animations and live data, visit GitHub profiles directly:**
 
 <p align="center">
 
 **🔗 [Primary: syedasadabbas](https://github.com/syedasadabbas)**  
-📊 Live stats | All-time contributions | Interactive calendar
+Live stats | All-time contributions | Interactive calendar
 
 **🔗 [Research & Work: syedprog](https://github.com/syedprog)**  
-📊 Live stats | Complete history | Interactive calendar
+Live stats | Complete history | Interactive calendar
 
 **🔗 [Learning: syedprogg](https://github.com/syedprogg)**  
-📊 Live stats | Full timeline | Interactive calendar
+Live stats | Full timeline | Interactive calendar
 
 </p>
 
@@ -509,7 +465,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-### 📋 Data Sources & Update Frequency
+### Data Sources & Update Frequency
 
 | Source | Update Frequency | Data Type | URL |
 |--------|---|---|---|
@@ -525,7 +481,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-## 🎓 Education
+## Education
 
 **Bachelor of Science in Computer Science (BSCS)** | Hamdard University Islamabad Campus
 *September 2020 – June 2024 | GPA: 3.77/4.0*
@@ -535,7 +491,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-## 📚 Publications
+## Publications
 
 **Human Capital and Well-Being Meter Based on Federated Learning Powered Sentiment Analysis** (2026)
 - **Authors**: Shaheer, Nazar, Tayyaba, Hassan, Inam-Ur-Rehman, Riaz, Malik, **Syed Asad Abbas**, Sania Ishaq
@@ -547,7 +503,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-## 🏆 Achievements & Recognition
+## Achievements & Recognition
 
 <p align="center">
   <img src="https://img.shields.io/badge/🥇%20Leadpages%20Vibathon-Distinguished%20Achievement-FF6B6B?style=for-the-badge" alt="Leadpages Award"/>
@@ -556,31 +512,14 @@ Each account has its own graph with individual color coding and optimized scalin
   <br/>
   <img src="https://img.shields.io/badge/🔬%20Federated%20Learning%20Research-2026%20DOI%3A%2010.5281%2Fzenodo.18513303-45B7D1?style=for-the-badge" alt="Research"/>
   <br/>
-  <img src="https://img.shields.io/badge/💼%20Software%20Engineer%20II-Uforia%20→%20Leadpages-00D4FF?style=for-the-badge" alt="Current Role"/>
-  <br/>
   <img src="https://img.shields.io/badge/🎓%20BSCS-Hamdard%20University%203.77%2F4.0-9B59B6?style=for-the-badge" alt="Education"/>
-  <br/>
-  <img src="https://img.shields.io/badge/🚀%204%2B%20Years-Full--Stack%20%26%20AI%2FML%20Experience-FF6B9D?style=for-the-badge" alt="Experience"/>
   <br/>
   <img src="https://img.shields.io/badge/🌐%203%20GitHub%20Accounts-40%2B%20Repositories-00FF88?style=for-the-badge" alt="GitHub"/>
 </p>
 
-### Notable Achievements Across All Accounts
-
-| Achievement | Details | Date |
-|------------|---------|------|
-| **Peer-Reviewed Publication** | Human Capital and Well-Being Meter Based on Federated Learning | 2026 |
-| **Distinguished Award** | Leadpages Vibathon for exceptional contributions | 2025 |
-| **SaaS Platform Experience** | Leadpages (500K+ users) | July 2025 - Present |
-| **Integration Pipelines** | 5 marketing platforms orchestrated | 2025 |
-| **AI/ML Models Deployed** | 8+ machine learning & deep learning models | 2024 |
-| **Full-Stack Applications** | 10+ applications shipped across frameworks | 2022-Present |
-| **Cloud Certifications** | GCP, AWS, Docker expertise | Ongoing |
-| **Hardware-in-the-Loop Testing** | Synapsio embedded device automation | 2025-Present |
-
 ---
 
-## 🔗 Connect
+## Connect
 
 <p>
   <a href="mailto:asadabbassherazi@gmail.com">
@@ -596,16 +535,16 @@ Each account has its own graph with individual color coding and optimized scalin
 
 ---
 
-## 💡 What I'm Currently Working On
+## What I'm Currently Working On
 
-- 🎮 **Code Names Game Redesign**: Full-stack Next.js application with real-time multiplayer mechanics
-- 🤖 **Agentic Systems**: Building autonomous agent architectures for workflow automation
-- 🧠 **AI Integration**: Claude API-powered interactive experiences and intelligent automation
-- 📊 **Hardware Testing**: Synapsio platform for embedded device measurement and automated bench testing
+- **Code Names Game Redesign**: Full-stack Next.js application with real-time multiplayer mechanics
+- **Agentic Systems**: Building autonomous agent architectures for workflow automation
+- **AI Integration**: Claude API-powered interactive experiences and intelligent automation
+- **Hardware Testing**: Synapsio platform for embedded device measurement and automated bench testing
 
 ---
 
-## 🌱 Always Learning
+## Always Learning
 
 I'm passionate about:
 - Cutting-edge AI/ML architectures and agentic systems
