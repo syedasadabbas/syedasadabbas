@@ -332,17 +332,32 @@ Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-tim
 
 ---
 
-### 📈 Combined Contribution Activity Graph - All 3 Accounts
+### 📈 Combined Contribution Activity Graph - All 3 Accounts (All-Time)
 
-> **Single unified visualization showing combined contribution data from all three accounts**
+> **Single unified visualization showing complete contribution data from all three accounts - from account inception to present**
 
-<p align="center">
-  <img alt="Combined GitHub Activity Graph - All 3 Accounts" src="https://github-readme-activity-graph.vercel.app/graph?username=syedasadabbas&custom_title=Combined%20GitHub%20Activity%20(All%203%20Accounts)&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark&hide_border=true" width="100%"/>
-</p>
+<div align="center">
+
+**🔗 [View Full Interactive All-Time Graph](./contribution-graph-all-time.html)**
+
+**Key Features:**
+- ✅ Complete all-time history (from account creation to present)
+- ✅ Weekly aggregated data (7-day intervals)
+- ✅ Vertical axis: 10-point increments (for clarity)
+- ✅ Horizontal axis: Weekly separation (not daily)
+- ✅ All 3 accounts combined in single visualization
+- ✅ Interactive tooltips and hover effects
+- ✅ Account comparison chart included
+
+</div>
 
 <br/>
 
-**📌 Note:** Graph above shows combined activity data from all three accounts. For complete all-time contribution calendars with interactive features, visit individual GitHub profiles directly.
+**📌 Note:** The interactive all-time graph shows:
+- Primary (@syedasadabbas): Complete history from day 1
+- Research (@syedprog): All work and research contributions
+- Learning (@syedprogg): All learning and experimental projects
+- Combined Total: Aggregated view across all accounts
 
 <br/>
 
