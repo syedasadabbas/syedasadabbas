@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
-  <defs>
-    <style>
-      .title { font-size: 22px; font-weight: bold; fill: #FFD700; }
-      .subtitle { font-size: 14px; fill: #8b949e; }
-      .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-      .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-      .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-      .axis-line { stroke: #30363d; stroke-width: 2; }
-      .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-      .point { fill: #FFD700; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
-      .bg { fill: #0d1117; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: #FFD700; }
+    .subtitle { font-size: 14px; fill: #8b949e; }
+    .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
+    .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
+    .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
+    .axis-line { stroke: #30363d; stroke-width: 2; }
+    .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .point { fill: #FFD700; }
+    .bg { fill: #0d1117; }
+  </style>
 
   <!-- Background -->
   <rect width="1200" height="500" class="bg"/>
