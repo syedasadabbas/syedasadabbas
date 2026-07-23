@@ -43,6 +43,11 @@ function makeRequest(options, body = null) {
   });
 }
 
+// CRITICAL: Round to 2 decimals to avoid floating point errors
+function round(num) {
+  return Math.round(num * 100) / 100;
+}
+
 async function getCurrentYearContributions(username) {
   console.log(`    📡 Fetching current year data...`);
   const query = `
@@ -256,15 +261,15 @@ function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTot
 
 <rect width="${width}" height="${height}" class="bg"/>
 
-<text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
-<text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time: ${totalAllTime} commits (${weekCount} weeks) | Current Year: ${currentYearTotal} | ${yearsSinceCreation}y since ${accountCreated}</text>`;
+<text x="${round(width / 2)}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
+<text x="${round(width / 2)}" y="55" class="subtitle" text-anchor="middle">All-Time: ${totalAllTime} commits (${weekCount} weeks) | Current Year: ${currentYearTotal} | ${yearsSinceCreation}y since ${accountCreated}</text>`;
 
   // Y-axis
   for (let i = 0; i <= yMax; i += yStep) {
     const y = padding.top + plotHeight - (i / yMax) * plotHeight;
-    const yRounded = parseFloat(y.toFixed(2));
-    svg += `\n<line x1="${padding.left}" y1="${yRounded}" x2="${padding.left + plotWidth}" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
-    svg += `\n<text x="${padding.left - 10}" y="${yRounded + 4}" class="axis-label" text-anchor="end">${i}</text>`;
+    const yRounded = round(y);
+    svg += `\n<line x1="100" y1="${yRounded}" x2="1360" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
+    svg += `\n<text x="90" y="${round(yRounded + 4)}" class="axis-label" text-anchor="end">${i}</text>`;
   }
 
   // X-axis
@@ -273,48 +278,47 @@ function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTot
     const idx = Math.round((i / xSteps) * weekCount);
     if (idx < weekCount) {
       const x = padding.left + (idx / weekCount) * plotWidth;
-      const xRounded = parseFloat(x.toFixed(2));
-      svg += `\n<line x1="${xRounded}" y1="${padding.top + plotHeight}" x2="${xRounded}" y2="${padding.top + plotHeight + 5}" class="grid-line"/>`;
+      const xRounded = round(x);
+      svg += `\n<line x1="${xRounded}" y1="500" x2="${xRounded}" y2="505" class="grid-line"/>`;
       if (i % 2 === 0) {
-        svg += `\n<text x="${xRounded}" y="${padding.top + plotHeight + 20}" class="axis-label" text-anchor="middle">W${idx}</text>`;
+        svg += `\n<text x="${xRounded}" y="520" class="axis-label" text-anchor="middle">W${idx}</text>`;
       }
     }
   }
 
-  // Line
+  // Line path
   if (maxValue > 0) {
     let pathData = '';
     for (let i = 0; i < weeklyData.length; i++) {
       const x = padding.left + (i / weekCount) * plotWidth;
       const y = padding.top + plotHeight - (weeklyData[i] / yMax) * plotHeight;
-      const xRounded = parseFloat(x.toFixed(3));
-      const yRounded = parseFloat(y.toFixed(3));
+      const xRounded = round(x);
+      const yRounded = round(y);
       pathData += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
     }
     svg += `\n<path d="${pathData}" class="line"/>`;
 
-    // Points with labels on EVERY point
+    // Points and labels
     weeklyData.forEach((val, i) => {
       const x = padding.left + (i / weekCount) * plotWidth;
       const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-      const xRounded = parseFloat(x.toFixed(3));
-      const yRounded = parseFloat(y.toFixed(3));
+      const xRounded = round(x);
+      const yRounded = round(y);
       
       svg += `\n<circle cx="${xRounded}" cy="${yRounded}" r="4" class="point"/>`;
       
-      // Label EVERY point with its value
       if (val > 0) {
-        svg += `\n<text x="${xRounded}" y="${yRounded - 12}" class="point-label" text-anchor="middle">${val}</text>`;
+        svg += `\n<text x="${xRounded}" y="${round(yRounded - 12)}" class="point-label" text-anchor="middle">${val}</text>`;
       }
     });
   }
 
   // Axes
-  svg += `\n<line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
-  svg += `\n<line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
+  svg += `\n<line x1="100" y1="60" x2="100" y2="500" class="axis-line"/>`;
+  svg += `\n<line x1="100" y1="500" x2="1360" y2="500" class="axis-line"/>`;
 
   const timestamp = new Date().toISOString().split('T')[0];
-  svg += `\n<text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
+  svg += `\n<text x="1390" y="590" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
 
   svg += `\n</svg>`;
   return svg;
@@ -362,15 +366,15 @@ function generateCombinedSVG(data) {
 
 <rect width="${width}" height="${height}" class="bg"/>
 
-<text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 Combined All 3 Accounts</text>
-<text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">Total: ${totalAll} commits | ${maxWeeks} weeks</text>`;
+<text x="${round(width / 2)}" y="35" class="title" text-anchor="middle">📊 Combined All 3 Accounts</text>
+<text x="${round(width / 2)}" y="55" class="subtitle" text-anchor="middle">${totalAll} total commits | ${maxWeeks} weeks</text>`;
 
   // Y-axis
   for (let i = 0; i <= yMax; i += yStep) {
     const y = padding.top + plotHeight - (i / yMax) * plotHeight;
-    const yRounded = parseFloat(y.toFixed(2));
-    svg += `\n<line x1="${padding.left}" y1="${yRounded}" x2="${padding.left + plotWidth}" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
-    svg += `\n<text x="${padding.left - 10}" y="${yRounded + 4}" class="axis-label" text-anchor="end">${i}</text>`;
+    const yRounded = round(y);
+    svg += `\n<line x1="100" y1="${yRounded}" x2="1360" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
+    svg += `\n<text x="90" y="${round(yRounded + 4)}" class="axis-label" text-anchor="end">${i}</text>`;
   }
 
   // Individual lines
@@ -379,8 +383,8 @@ function generateCombinedSVG(data) {
     for (let i = 0; i < paddedData[account].length; i++) {
       const x = padding.left + (i / maxWeeks) * plotWidth;
       const y = padding.top + plotHeight - (paddedData[account][i] / yMax) * plotHeight;
-      const xRounded = parseFloat(x.toFixed(3));
-      const yRounded = parseFloat(y.toFixed(3));
+      const xRounded = round(x);
+      const yRounded = round(y);
       pathData += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
     }
 
@@ -393,17 +397,17 @@ function generateCombinedSVG(data) {
   for (let i = 0; i < combinedData.length; i++) {
     const x = padding.left + (i / maxWeeks) * plotWidth;
     const y = padding.top + plotHeight - (combinedData[i] / yMax) * plotHeight;
-    const xRounded = parseFloat(x.toFixed(3));
-    const yRounded = parseFloat(y.toFixed(3));
+    const xRounded = round(x);
+    const yRounded = round(y);
     combinedPath += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
   }
   svg += `\n<path d="${combinedPath}" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
 
-  svg += `\n<line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
-  svg += `\n<line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
+  svg += `\n<line x1="100" y1="60" x2="100" y2="500" class="axis-line"/>`;
+  svg += `\n<line x1="100" y1="500" x2="1360" y2="500" class="axis-line"/>`;
 
   const timestamp = new Date().toISOString().split('T')[0];
-  svg += `\n<text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
+  svg += `\n<text x="1390" y="590" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
 
   svg += `\n</svg>`;
   return svg;
@@ -413,7 +417,6 @@ function generateMultiAccountStats(data) {
   const totalCommits = Object.values(data).reduce((sum, d) => sum + d.totalContributions, 0);
   const totalRepos = Object.values(data).reduce((sum, d) => sum + d.repositoriesCount, 0);
   
-  // Aggregate languages
   const allLanguages = {};
   Object.values(data).forEach(d => {
     Object.entries(d.languages).forEach(([lang, count]) => {
@@ -426,35 +429,6 @@ function generateMultiAccountStats(data) {
     .slice(0, 5)
     .map(([lang, count]) => `* ${lang}: ${count} repositories`)
     .join('\n');
-
-  const stats = `# 📊 Multi-Account Aggregated Statistics
-
-**Last Updated:** ${new Date().toISOString().split('T')[0]}
-
-## Summary
-
-* **Total Commits:** ${totalCommits} commits across all time
-* **Total Repositories:** ${totalRepos} repositories
-* **Active Accounts:** ${ACCOUNTS.length} GitHub accounts
-* **Combined Years:** ${Object.values(data).reduce((sum, d) => sum + d.yearsSinceCreation, 0)} years
-
-## Account Breakdown
-
-`;
-
-  Object.entries(data).forEach(([account, stats]) => {
-    const markdown = `### ${ACCOUNT_COLORS[account].name} (@${account})
-
-* **Account Created:** ${stats.accountCreated}
-* **Years Active:** ${stats.yearsSinceCreation}
-* **Total Commits:** ${stats.totalContributions} commits
-* **Current Year:** ${stats.currentYearTotal} commits
-* **Repositories:** ${stats.repositoriesCount}
-* **Weeks of Data:** ${stats.weeklyData.length}
-
-`;
-    return markdown;
-  });
 
   const accountDetails = Object.entries(data)
     .map(([account, stats]) => `### ${ACCOUNT_COLORS[account].name} (@${account})
@@ -494,11 +468,10 @@ ${topLanguages}
 
 async function main() {
   try {
-    console.log('\n📊 Generating ALL-TIME Graphs with Correct Data...\n');
+    console.log('\n📊 Generating ALL-TIME Graphs with Clean Coordinates...\n');
     
     const data = await fetchAllAccounts();
 
-    // Generate individual graphs
     for (const account of ACCOUNTS) {
       try {
         const svg = generateIndividualSVG(
@@ -518,7 +491,6 @@ async function main() {
       }
     }
 
-    // Generate combined graph
     try {
       const combinedSvg = generateCombinedSVG(data);
       fs.writeFileSync('CONTRIBUTION_GRAPH.svg', combinedSvg, 'utf-8');
@@ -527,7 +499,6 @@ async function main() {
       console.error(`❌ Combined: ${error.message}`);
     }
 
-    // Generate MULTI_ACCOUNT_STATS.md
     try {
       const statsMarkdown = generateMultiAccountStats(data);
       fs.writeFileSync('MULTI_ACCOUNT_STATS.md', statsMarkdown, 'utf-8');
