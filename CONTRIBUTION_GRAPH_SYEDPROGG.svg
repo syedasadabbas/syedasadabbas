@@ -11,6 +11,7 @@
       .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
       .point { fill: #FFD700; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
       .bg { fill: #0d1117; }
+      .error-text { font-size: 14px; fill: #ff6b6b; font-weight: bold; }
     </style>
   </defs>
 
@@ -20,8 +21,6 @@
   <!-- Title -->
   <text x="600" y="35" class="title" text-anchor="middle">📊 Learning Projects (@syedprogg)</text>
   <text x="600" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: 654 commits</text>
-
-  <!-- Grid lines and Y-axis labels -->
   <line x1="100" y1="420" x2="1160" y2="420" class="grid-line"/>
   <text x="90" y="425" class="axis-label" text-anchor="end">0</text>
   <line x1="100" y1="384" x2="1160" y2="384" class="grid-line"/>
