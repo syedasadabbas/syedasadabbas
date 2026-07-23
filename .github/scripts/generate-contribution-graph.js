@@ -418,6 +418,22 @@ function generateCombinedSVG(data) {
   svg += `\n<line x1="100" y1="60" x2="100" y2="500" class="axis-line"/>`;
   svg += `\n<line x1="100" y1="500" x2="1360" y2="500" class="axis-line"/>`;
 
+  // Legend (matches individual graph styling; makes overlay lines identifiable)
+  const legendItems = [
+    { label: 'Combined', color: '#00d4ff' },
+    ...Object.keys(data).map(account => ({
+      label: account,
+      color: ACCOUNT_COLORS[account].color,
+    })),
+  ];
+  let legendX = 120;
+  const legendY = 545;
+  legendItems.forEach(item => {
+    svg += `\n<line x1="${legendX}" y1="${legendY}" x2="${legendX + 24}" y2="${legendY}" stroke="${escapeXml(item.color)}" stroke-width="3" stroke-linecap="round"/>`;
+    svg += `\n<text x="${legendX + 32}" y="${legendY + 4}" class="axis-label" text-anchor="start">${escapeXml(item.label)}</text>`;
+    legendX += 130 + item.label.length * 4;
+  });
+
   const timestamp = new Date().toISOString().split('T')[0];
   svg += `\n<text x="1390" y="590" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
 
