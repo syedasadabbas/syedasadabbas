@@ -2,10 +2,10 @@
 
 /**
  * Generate TRUE All-Time Contribution Graphs
- * V5 Data Fetching + V2 Professional SVG Design
+ * V5 Data Fetching + V2 Design (GitHub-Safe)
  * 
- * Uses v5's complete historical data fetching
- * Renders with v2's professional styling and design
+ * Removes filters/drop-shadows for GitHub compatibility
+ * Keeps professional V2 aesthetic
  */
 
 const https = require('https');
@@ -55,7 +55,7 @@ function makeRequest(options, body = null) {
 }
 
 /**
- * Get current year contributions (week-by-week)
+ * Get current year contributions
  */
 async function getCurrentYearContributions(username) {
   console.log(`    📡 Fetching current year data...`);
@@ -257,7 +257,7 @@ async function fetchAllAccounts() {
 }
 
 /**
- * Generate SVG with V2 Professional Design
+ * Generate GitHub-Safe SVG (V2 design, no filters)
  */
 function generateIndividualSVG(account, weeklyData, totalContributions, color, accountCreated, yearsSinceCreation) {
   const width = 1200;
@@ -275,21 +275,18 @@ function generateIndividualSVG(account, weeklyData, totalContributions, color, a
   const yMax = Math.ceil(maxValue / yStep) * yStep;
   const weekCount = weeklyData.length;
 
-  let svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
-  <defs>
-    <style>
-      .title { font-size: 22px; font-weight: bold; fill: ${color}; }
-      .subtitle { font-size: 14px; fill: #8b949e; }
-      .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-      .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-      .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-      .axis-line { stroke: #30363d; stroke-width: 2; }
-      .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-      .point { fill: ${color}; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
-      .bg { fill: #0d1117; }
-    </style>
-  </defs>
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: ${color}; }
+    .subtitle { font-size: 14px; fill: #8b949e; }
+    .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
+    .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
+    .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
+    .axis-line { stroke: #30363d; stroke-width: 2; }
+    .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .point { fill: ${color}; }
+    .bg { fill: #0d1117; }
+  </style>
 
   <!-- Background -->
   <rect width="${width}" height="${height}" class="bg"/>
@@ -396,21 +393,18 @@ function generateCombinedSVG(data) {
   const yMax = Math.ceil(maxValue / yStep) * yStep;
   const totalAll = Object.values(data).reduce((sum, d) => sum + d.totalContributions, 0);
 
-  let svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
-  <defs>
-    <style>
-      .title { font-size: 22px; font-weight: bold; fill: #00d4ff; }
-      .subtitle { font-size: 14px; fill: #8b949e; }
-      .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-      .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-      .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-      .axis-line { stroke: #30363d; stroke-width: 2; }
-      .line { stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; opacity: 0.8; }
-      .point { filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
-      .bg { fill: #0d1117; }
-    </style>
-  </defs>
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: #00d4ff; }
+    .subtitle { font-size: 14px; fill: #8b949e; }
+    .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
+    .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
+    .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
+    .axis-line { stroke: #30363d; stroke-width: 2; }
+    .line { stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; opacity: 0.8; }
+    .point { fill: currentColor; }
+    .bg { fill: #0d1117; }
+  </style>
 
   <!-- Background -->
   <rect width="${width}" height="${height}" class="bg"/>
@@ -454,7 +448,7 @@ function generateCombinedSVG(data) {
     paddedData[account].forEach((val, i) => {
       const x = padding.left + (i / maxWeeks) * plotWidth;
       const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-      svg += `\n  <circle cx="${x}" cy="${y}" r="3" class="point" fill="${color}"/>`;
+      svg += `\n  <circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`;
     });
   });
 
@@ -471,7 +465,7 @@ function generateCombinedSVG(data) {
   combinedData.forEach((val, i) => {
     const x = padding.left + (i / maxWeeks) * plotWidth;
     const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-    svg += `\n  <circle cx="${x}" cy="${y}" r="4" fill="#00d4ff" class="point"/>`;
+    svg += `\n  <circle cx="${x}" cy="${y}" r="4" fill="#00d4ff"/>`;
     
     if (val > 0 && (val === maxValue || i % 8 === 0 || val > yMax * 0.6)) {
       svg += `\n  <text x="${x}" y="${y - 12}" class="value-label" text-anchor="middle" fill="#00d4ff">${val}</text>`;
@@ -512,7 +506,7 @@ function generateCombinedSVG(data) {
 
 async function main() {
   try {
-    console.log('\n📊 Generating ALL-TIME Contribution Graphs (V2 Design + V5 Data)...\n');
+    console.log('\n📊 Generating ALL-TIME Contribution Graphs (GitHub-Safe)...\n');
     
     const data = await fetchAllAccounts();
 
