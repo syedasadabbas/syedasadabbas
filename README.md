@@ -268,70 +268,129 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
 
 <p align="center">
   <img src="https://img.shields.io/badge/Total%20Repositories-40%2B-00D4FF?style=for-the-badge" alt="Repositories"/>
-  <img src="https://img.shields.io/badge/Primary%20Languages-Python%20%7C%20TypeScript%20%7C%20JavaScript-00FF88?style=for-the-badge" alt="Languages"/>
-  <img src="https://img.shields.io/badge/Tech%20Stack-React%20%7C%20NestJS%20%7C%20Django-FF6B9D?style=for-the-badge" alt="Tech Stack"/>
-  <img src="https://img.shields.io/badge/Cloud%20Platforms-GCP%20%7C%20AWS-FFB627?style=for-the-badge" alt="Cloud"/>
-  <img src="https://img.shields.io/badge/AI%2FML%20Expertise-TensorFlow%20%7C%20PyTorch%20%7C%20LLMs-9B59B6?style=for-the-badge" alt="AI/ML"/>
+  <img src="https://img.shields.io/badge/Total%20Commits-3000%2B-00FF88?style=for-the-badge" alt="Commits"/>
+  <img src="https://img.shields.io/badge/Total%20PRs-100%2B-FF6B9D?style=for-the-badge" alt="PRs"/>
+  <img src="https://img.shields.io/badge/Followers-Combined-9B59B6?style=for-the-badge" alt="Followers"/>
+  <img src="https://img.shields.io/badge/Public%20Gists-50%2B-FFB627?style=for-the-badge" alt="Gists"/>
 </p>
 
 <details>
-<summary><b>📊 View Combined Statistics File</b></summary>
+<summary><b>📊 View Combined All-Time Statistics File</b></summary>
 <br/>
-Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for detailed aggregated statistics from all 3 GitHub accounts, updated daily via GitHub Actions.
+Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for detailed aggregated statistics from all 3 GitHub accounts showing cumulative all-time data, updated daily via GitHub Actions.
 </details>
 
 <br/>
 
 ---
 
-### 🔗 Primary Account (@syedasadabbas)
+### 🔗 Primary Account (@syedasadabbas) - All-Time Stats
 
 <a href="https://github.com/syedasadabbas">
-  <img alt="Syed's GitHub Stats" src="https://denvercoder1-github-readme-stats.vercel.app/api?username=syedasadabbas&show_icons=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="Syed's GitHub Stats - All Time" src="https://github-readme-stats.vercel.app/api?username=syedasadabbas&show_icons=true&include_all_commits=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88&hide=contribs" height="200" width="49%"/>
 </a>
 <a href="https://github.com/syedasadabbas">
-  <img alt="Syed's Top Languages" src="https://denvercoder1-github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=10&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="Syed's Top Languages - All Time" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=12&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="200" width="49%"/>
 </a>
 
 <br/>
 
-### 🔗 Secondary Account (@syedprog) - Research & Leadpages
+**All-Time Metrics for @syedasadabbas:**
+- **Total Public Repos**: Check profile stats
+- **All Commits**: Included (via `include_all_commits=true`)
+- **Public Gists**: Shown in stats
+- **Followers & Following**: Displayed dynamically
+- **Languages**: 12 most used (all-time)
+
+<br/>
+
+### 🔗 Secondary Account (@syedprog) - All-Time Stats - Research & Leadpages
 
 <a href="https://github.com/syedprog">
-  <img alt="syedprog's GitHub Stats" src="https://denvercoder1-github-readme-stats.vercel.app/api?username=syedprog&show_icons=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="syedprog GitHub Stats - All Time" src="https://github-readme-stats.vercel.app/api?username=syedprog&show_icons=true&include_all_commits=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88&hide=contribs" height="200" width="49%"/>
 </a>
 <a href="https://github.com/syedprog">
-  <img alt="syedprog's Top Languages" src="https://denvercoder1-github-readme-stats.vercel.app/api/top-langs/?username=syedprog&langs_count=10&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="syedprog Top Languages - All Time" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprog&langs_count=12&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="200" width="49%"/>
 </a>
 
 <br/>
 
-### 🔗 Tertiary Account (@syedprogg) - Learning Projects
+**All-Time Metrics for @syedprog:**
+- **Total Commits**: All-time included
+- **Public Repositories**: Dynamic count
+- **Languages Used**: Complete history
+- **Contribution Stats**: Cumulative
+
+<br/>
+
+### 🔗 Tertiary Account (@syedprogg) - All-Time Stats - Learning Projects
 
 <a href="https://github.com/syedprogg">
-  <img alt="syedprogg's GitHub Stats" src="https://denvercoder1-github-readme-stats.vercel.app/api?username=syedprogg&show_icons=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="syedprogg GitHub Stats - All Time" src="https://github-readme-stats.vercel.app/api?username=syedprogg&show_icons=true&include_all_commits=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88&hide=contribs" height="200" width="49%"/>
 </a>
 <a href="https://github.com/syedprogg">
-  <img alt="syedprogg's Top Languages" src="https://denvercoder1-github-readme-stats.vercel.app/api/top-langs/?username=syedprogg&langs_count=10&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="192" width="49.5%"/>
+  <img alt="syedprogg Top Languages - All Time" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprogg&langs_count=12&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="200" width="49%"/>
+</a>
+
+<br/>
+
+**All-Time Metrics for @syedprogg:**
+- **All Commits Since Joining**: Included
+- **Complete Repository Count**: Shown
+- **Full Language History**: 12 languages displayed
+- **All-Time Statistics**: No filtering
+
+<br/>
+
+---
+
+### 📊 Detailed All-Time Language Distribution
+
+<a href="https://github.com/syedasadabbas">
+  <img alt="Syed Languages Extended" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=20&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="220" width="32.5%"/>
+</a>
+<a href="https://github.com/syedprog">
+  <img alt="syedprog Languages Extended" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprog&langs_count=20&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="220" width="32.5%"/>
+</a>
+<a href="https://github.com/syedprogg">
+  <img alt="syedprogg Languages Extended" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprogg&langs_count=20&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="220" width="32.5%"/>
 </a>
 
 <br/>
 
 ---
 
-### 🌐 GitHub Activity Graphs
+### 🌐 GitHub Activity Graphs - Full Timeline
 
-**Primary Account Activity**
+**Primary Account Activity (All-Time)**
 
-![Syed's Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=syedasadabbas&custom_title=syedasadabbas%20GitHub%20Activity&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark)
+![Syed's Activity Graph - Full History](https://github-readme-activity-graph.vercel.app/graph?username=syedasadabbas&custom_title=syedasadabbas%20GitHub%20Activity%20(All-Time)&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark&hide_border=true)
 
-**Research Account Activity**
+**Research Account Activity (All-Time)**
 
-![syedprog Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=syedprog&custom_title=syedprog%20GitHub%20Activity&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark)
+![syedprog Activity Graph - Full History](https://github-readme-activity-graph.vercel.app/graph?username=syedprog&custom_title=syedprog%20GitHub%20Activity%20(All-Time)&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark&hide_border=true)
 
-**Learning Projects Activity**
+**Learning Projects Activity (All-Time)**
 
-![syedprogg Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=syedprogg&custom_title=syedprogg%20GitHub%20Activity&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark)
+![syedprogg Activity Graph - Full History](https://github-readme-activity-graph.vercel.app/graph?username=syedprogg&custom_title=syedprogg%20GitHub%20Activity%20(All-Time)&bg_color=0d1117&color=00d4ff&line=00d4ff&point=00ff88&area_color=1f6feb&title_color=00d4ff&area=true&theme=github-dark&hide_border=true)
+
+<br/>
+
+---
+
+### 📈 Contribution Streaks (All-Time)
+
+<a href="https://github.com/syedasadabbas">
+  <img alt="Syed's Contribution Streak" src="https://github-readme-streak-stats.herokuapp.com?user=syedasadabbas&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32.5%"/>
+</a>
+<a href="https://github.com/syedprog">
+  <img alt="syedprog Contribution Streak" src="https://github-readme-streak-stats.herokuapp.com?user=syedprog&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32.5%"/>
+</a>
+<a href="https://github.com/syedprogg">
+  <img alt="syedprogg Contribution Streak" src="https://github-readme-streak-stats.herokuapp.com?user=syedprogg&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32.5%"/>
+</a>
+
+<br/>
 
 ---
 
@@ -408,7 +467,7 @@ Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for detailed
 
 ## 💡 What I'm Currently Working On
 
-- 🎮 **Code Names Game Redesign**: Full-stack Next.js application with real-time multiplayer mechanics
+- 🎮 **Code Names Game Redesign**: Full-stack Next.js application with real-time multiplayer mechanics - Here is the link, enjoy: <a href="https://codenames.decodrs.com/"><b>Codenames</b></a>
 - 🤖 **Agentic Systems**: Building autonomous agent architectures for workflow automation
 - 🧠 **AI Integration**: Claude API-powered interactive experiences and intelligent automation
 - 📊 **Hardware Testing**: Synapsio platform for embedded device measurement and automated bench testing
