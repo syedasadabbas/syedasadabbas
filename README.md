@@ -186,6 +186,7 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
 ### **Code Names Game Redesign** | Next.js 15, React 19, Tailwind, Socket.IO, Prisma
 Full UI/UX redesign with Figma prototyping across 14 screens. Built collaborative real-time game mechanics with WebSocket support and production-ready database schema.
 - **Tech Stack**: Next.js 15, React 19, Tailwind CSS, Socket.IO, Prisma ORM, PostgreSQL
+- **🎮 Play Now**: [Codenames Game](https://codenames.decodrs.com/) - Try the live playable version!
 
 ### **Synapsio - Embedded Device Measurement & Testing** | Better Devices
 24/7 agentic development workflow for hardware-in-the-loop testing. Orchestrated bench testing against ESP32 DUTs with Analog Discovery 3 oscilloscope integration and automated test suite execution.
@@ -264,29 +265,33 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
 
 ## 📊 GitHub Statistics & Activity
 
-### 📈 All Accounts Combined - Dynamic Statistics
+### 📈 All Accounts Combined - Live Statistics
 
 <p align="center">
-  <img alt="GitHub Repos" src="https://img.shields.io/badge/dynamic/json?label=Total%20Repositories&query=repositories&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsyedasadabbas%2Fsyedasadabbas%2Fmain%2FMULTI_ACCOUNT_STATS.md&color=00D4FF&style=for-the-badge"/>
-  <img alt="Total Commits" src="https://img.shields.io/badge/dynamic/json?label=Total%20Commits&query=commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsyedasadabbas%2Fsyedasadabbas%2Fmain%2FMULTI_ACCOUNT_STATS.md&color=00FF88&style=for-the-badge"/>
-  <img alt="Total PRs" src="https://img.shields.io/badge/dynamic/json?label=Total%20PRs&query=pull_requests&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsyedasadabbas%2Fsyedasadabbas%2Fmain%2FMULTI_ACCOUNT_STATS.md&color=FF6B9D&style=for-the-badge"/>
-  <img alt="Total Issues" src="https://img.shields.io/badge/dynamic/json?label=Total%20Issues&query=issues&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsyedasadabbas%2Fsyedasadabbas%2Fmain%2FMULTI_ACCOUNT_STATS.md&color=9B59B6&style=for-the-badge"/>
-  <img alt="Languages" src="https://img.shields.io/badge/dynamic/json?label=Languages&query=languages&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsyedasadabbas%2Fsyedasadabbas%2Fmain%2FMULTI_ACCOUNT_STATS.md&color=FFB627&style=for-the-badge"/>
+  <strong>📊 View Real-Time Aggregated Statistics (Updated Daily)</strong>
+  <br/>
+  Check <a href="./MULTI_ACCOUNT_STATS.md"><strong>MULTI_ACCOUNT_STATS.md</strong></a> for comprehensive statistics from all 3 GitHub accounts.
+  <br/>
+  <strong>✅ Automatically updated every 24 hours at 00:00 UTC via GitHub Actions</strong>
 </p>
 
+**What's Included:**
+- ✅ **Live cumulative commits** from all accounts  
+- ✅ **Current repository counts** (refreshed daily)  
+- ✅ **Top languages** across all projects (auto-calculated)  
+- ✅ **Recent projects** from each account  
+- ✅ **Activity timestamps** (always current)  
+- ✅ **Per-account breakdown** (individual stats)  
+
 <details>
-<summary><b>📊 View Real-Time Aggregated Statistics (Updated Daily)</b></summary>
+<summary><b>📋 Detailed Statistics Breakdown</b></summary>
 <br/>
-Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-time aggregated statistics from all 3 GitHub accounts. This file is <strong>automatically updated every 24 hours at 00:00 UTC</strong> via GitHub Actions with:
-
-✅ <strong>Live cumulative commits</strong> from all accounts  
-✅ <strong>Current repository counts</strong> (refreshed daily)  
-✅ <strong>Top languages</strong> across all projects (auto-calculated)  
-✅ <strong>Recent projects</strong> from each account  
-✅ <strong>Activity timestamps</strong> (always current)  
-✅ <strong>Per-account breakdown</strong> (individual stats)  
-
-<strong>Last Updated</strong>: Automatically refreshed daily via GitHub Actions workflow
+View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the complete file with real-time data including:
+- Aggregated contribution statistics
+- Per-account detailed breakdown
+- Recent repositories
+- All-time totals by account
+- Data generation timestamp
 </details>
 
 <br/>
