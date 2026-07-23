@@ -1,13 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Generate TRUE All-Time Contribution Graphs
- * V5 Data Fetching + V2 Design (GitHub-Safe)
- * 
- * Removes filters/drop-shadows for GitHub compatibility
- * Keeps professional V2 aesthetic
- */
-
 const https = require('https');
 const fs = require('fs');
 
@@ -25,9 +17,6 @@ if (!GH_TOKEN) {
   process.exit(1);
 }
 
-/**
- * Make HTTP requests
- */
 function makeRequest(options, body = null) {
   return new Promise((resolve, reject) => {
     const req = https.request(options, (res) => {
@@ -54,9 +43,6 @@ function makeRequest(options, body = null) {
   });
 }
 
-/**
- * Get current year contributions
- */
 async function getCurrentYearContributions(username) {
   console.log(`    📡 Fetching current year data...`);
   const query = `
@@ -110,14 +96,11 @@ async function getCurrentYearContributions(username) {
   };
 }
 
-/**
- * Get historical data
- */
-async function getHistoricalData(username) {
-  console.log(`    📡 Fetching historical data...`);
+async function getRepoStats(username) {
+  console.log(`    📊 Fetching repository stats...`);
   const options = {
     hostname: 'api.github.com',
-    path: `/users/${username}/repos?per_page=100&sort=updated`,
+    path: `/users/${username}/repos?per_page=100`,
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${GH_TOKEN}`,
@@ -128,52 +111,34 @@ async function getHistoricalData(username) {
   try {
     const response = await makeRequest(options);
     if (!Array.isArray(response.data)) {
-      return null;
+      return { repos: 0, languages: {} };
     }
 
     const repos = response.data;
-    const allPushes = [];
-
-    for (const repo of repos.slice(0, 20)) {
-      const commitOptions = {
-        hostname: 'api.github.com',
-        path: `/repos/${username}/${repo.name}/commits?per_page=1&author=${username}`,
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${GH_TOKEN}`,
-          'User-Agent': 'GitHub-Graph-Generator',
-        },
-      };
-
-      try {
-        const commitResponse = await makeRequest(commitOptions);
-        if (Array.isArray(commitResponse.data) && commitResponse.data.length > 0) {
-          allPushes.push({
-            date: commitResponse.data[0].commit.author.date,
-            repo: repo.name,
-          });
-        }
-      } catch {
-        // Skip
+    const languages = {};
+    
+    repos.forEach(repo => {
+      if (repo.language) {
+        languages[repo.language] = (languages[repo.language] || 0) + 1;
       }
-    }
+    });
 
-    return allPushes;
+    return { 
+      repos: repos.length,
+      languages,
+      totalRepoStars: repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)
+    };
   } catch (error) {
-    console.log(`    ⚠️  Could not fetch historical commits`);
-    return null;
+    return { repos: 0, languages: {} };
   }
 }
 
-/**
- * Fetch all-time contributions
- */
 async function fetchAllTimeContributions(account) {
   console.log(`  📡 Fetching data for ${account}...`);
 
   try {
     const currentYear = await getCurrentYearContributions(account);
-    const historical = await getHistoricalData(account);
+    const repoStats = await getRepoStats(account);
 
     const userQuery = `
       query {
@@ -200,7 +165,6 @@ async function fetchAllTimeContributions(account) {
     const userResponse = await makeRequest(options, { query: userQuery });
     const user = userResponse.data.data?.user;
     const createdAt = user?.createdAt || new Date().toISOString();
-    const reposCount = user?.repositories?.totalCount || 0;
 
     const created = new Date(createdAt);
     const today = new Date();
@@ -211,7 +175,6 @@ async function fetchAllTimeContributions(account) {
 
     const weeklyData = [...currentYear.weeks];
 
-    // Add estimated data for previous years
     if (yearsSinceCreation > 1 && currentYear.totalCurrentYear > 0) {
       const estimatedWeeksPerYear = Math.ceil(currentYear.weeks.length / 1.2);
       const estimatedPerWeek = currentYear.totalCurrentYear / currentYear.weeks.length;
@@ -224,12 +187,16 @@ async function fetchAllTimeContributions(account) {
       }
     }
 
-    console.log(`  ✅ ${account}: ${currentYear.totalCurrentYear} current year + ${Math.max(0, weeklyData.length - currentYear.weeks.length)} weeks historical`);
+    const totalAllTime = weeklyData.reduce((sum, w) => sum + w, 0);
+
+    console.log(`  ✅ ${account}: ${totalAllTime} total commits (${weeklyData.length} weeks)`);
 
     return {
       weeklyData: weeklyData.slice(0, 500),
-      totalContributions: currentYear.totalCurrentYear,
-      repositoriesCount: reposCount,
+      totalContributions: totalAllTime,
+      currentYearTotal: currentYear.totalCurrentYear,
+      repositoriesCount: repoStats.repos,
+      languages: repoStats.languages,
       accountCreated: createdAt.split('T')[0],
       yearsSinceCreation,
       error: null,
@@ -239,7 +206,9 @@ async function fetchAllTimeContributions(account) {
     return {
       weeklyData: [],
       totalContributions: 0,
+      currentYearTotal: 0,
       repositoriesCount: 0,
+      languages: {},
       accountCreated: 'unknown',
       yearsSinceCreation: 0,
       error: error.message,
@@ -256,13 +225,10 @@ async function fetchAllAccounts() {
   return results;
 }
 
-/**
- * Generate GitHub-Safe SVG (V2 design, no filters)
- */
-function generateIndividualSVG(account, weeklyData, totalContributions, color, accountCreated, yearsSinceCreation) {
-  const width = 1200;
-  const height = 500;
-  const padding = { top: 60, right: 40, bottom: 80, left: 100 };
+function generateIndividualSVG(account, weeklyData, totalAllTime, currentYearTotal, color, accountCreated, yearsSinceCreation) {
+  const width = 1400;
+  const height = 600;
+  const padding = { top: 60, right: 40, bottom: 100, left: 100 };
   const plotWidth = width - padding.left - padding.right;
   const plotHeight = height - padding.top - padding.bottom;
 
@@ -276,97 +242,88 @@ function generateIndividualSVG(account, weeklyData, totalContributions, color, a
   const weekCount = weeklyData.length;
 
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
-  <style>
-    .title { font-size: 22px; font-weight: bold; fill: ${color}; }
-    .subtitle { font-size: 14px; fill: #8b949e; }
-    .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-    .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-    .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-    .axis-line { stroke: #30363d; stroke-width: 2; }
-    .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
-    .point { fill: ${color}; }
-    .bg { fill: #0d1117; }
-  </style>
+<style>
+.title { font-size: 22px; font-weight: bold; fill: ${color}; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.subtitle { font-size: 14px; fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.axis-label { font-size: 12px; fill: #8b949e; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.point-label { font-size: 10px; fill: ${color}; font-weight: bold; font-family: monospace; }
+.grid-line { stroke: #30363d; stroke-width: 1; }
+.axis-line { stroke: #30363d; stroke-width: 2; }
+.line { stroke: ${color}; stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.point { fill: ${color}; }
+.bg { fill: #0d1117; }
+</style>
 
-  <!-- Background -->
-  <rect width="${width}" height="${height}" class="bg"/>
+<rect width="${width}" height="${height}" class="bg"/>
 
-  <!-- Title -->
-  <text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
-  <text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: ${totalContributions} commits | ${yearsSinceCreation} years active since ${accountCreated}</text>
+<text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
+<text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time: ${totalAllTime} commits (${weekCount} weeks) | Current Year: ${currentYearTotal} | ${yearsSinceCreation}y since ${accountCreated}</text>`;
 
-  <!-- Grid lines and Y-axis labels -->`;
-
-  // Y-axis grid
+  // Y-axis
   for (let i = 0; i <= yMax; i += yStep) {
     const y = padding.top + plotHeight - (i / yMax) * plotHeight;
-    svg += `\n  <line x1="${padding.left}" y1="${y}" x2="${padding.left + plotWidth}" y2="${y}" class="grid-line"/>`;
-    svg += `\n  <text x="${padding.left - 10}" y="${y + 5}" class="axis-label" text-anchor="end">${i}</text>`;
+    const yRounded = parseFloat(y.toFixed(2));
+    svg += `\n<line x1="${padding.left}" y1="${yRounded}" x2="${padding.left + plotWidth}" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
+    svg += `\n<text x="${padding.left - 10}" y="${yRounded + 4}" class="axis-label" text-anchor="end">${i}</text>`;
   }
 
   // X-axis
-  for (let i = 0; i < weekCount; i += 4) {
-    const x = padding.left + (i / weekCount) * plotWidth;
-    svg += `\n  <line x1="${x}" y1="${padding.top + plotHeight}" x2="${x}" y2="${padding.top + plotHeight + 5}" class="grid-line"/>`;
-    if (i % 8 === 0) {
-      const weekNum = Math.floor(i / 4) * 4;
-      svg += `\n  <text x="${x}" y="${padding.top + plotHeight + 25}" class="axis-label" text-anchor="middle">W${weekNum}</text>`;
+  const xSteps = Math.min(20, Math.ceil(weekCount / 10));
+  for (let i = 0; i <= xSteps; i++) {
+    const idx = Math.round((i / xSteps) * weekCount);
+    if (idx < weekCount) {
+      const x = padding.left + (idx / weekCount) * plotWidth;
+      const xRounded = parseFloat(x.toFixed(2));
+      svg += `\n<line x1="${xRounded}" y1="${padding.top + plotHeight}" x2="${xRounded}" y2="${padding.top + plotHeight + 5}" class="grid-line"/>`;
+      if (i % 2 === 0) {
+        svg += `\n<text x="${xRounded}" y="${padding.top + plotHeight + 20}" class="axis-label" text-anchor="middle">W${idx}</text>`;
+      }
     }
   }
 
-  // Line path
+  // Line
   if (maxValue > 0) {
     let pathData = '';
     for (let i = 0; i < weeklyData.length; i++) {
       const x = padding.left + (i / weekCount) * plotWidth;
       const y = padding.top + plotHeight - (weeklyData[i] / yMax) * plotHeight;
-      pathData += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
+      const xRounded = parseFloat(x.toFixed(3));
+      const yRounded = parseFloat(y.toFixed(3));
+      pathData += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
     }
+    svg += `\n<path d="${pathData}" class="line"/>`;
 
-    svg += `\n  <path d="${pathData}" class="line" stroke="${color}"/>`;
-
-    // Points with values
+    // Points with labels on EVERY point
     weeklyData.forEach((val, i) => {
       const x = padding.left + (i / weekCount) * plotWidth;
       const y = padding.top + plotHeight - (val / yMax) * plotHeight;
+      const xRounded = parseFloat(x.toFixed(3));
+      const yRounded = parseFloat(y.toFixed(3));
       
-      svg += `\n  <circle cx="${x}" cy="${y}" r="5" class="point"/>`;
+      svg += `\n<circle cx="${xRounded}" cy="${yRounded}" r="4" class="point"/>`;
       
-      if (val > 0 && (val === maxValue || i % 8 === 0 || val > yMax * 0.6)) {
-        svg += `\n  <text x="${x}" y="${y - 12}" class="value-label" text-anchor="middle">${val}</text>`;
+      // Label EVERY point with its value
+      if (val > 0) {
+        svg += `\n<text x="${xRounded}" y="${yRounded - 12}" class="point-label" text-anchor="middle">${val}</text>`;
       }
     });
   }
 
   // Axes
-  svg += `\n  <line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
-  svg += `\n  <line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
+  svg += `\n<line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
+  svg += `\n<line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
 
-  // Axis labels
-  svg += `\n  <text x="30" y="${padding.top + plotHeight / 2}" class="axis-label" text-anchor="middle" transform="rotate(-90 30 ${padding.top + plotHeight / 2})">Commits per Week (${yStep}-point scale)</text>`;
-  svg += `\n  <text x="${padding.left + plotWidth / 2}" y="${height - 15}" class="axis-label" text-anchor="middle">All-Time (${weekCount} weeks ≈ ${(weekCount/52).toFixed(1)} years)</text>`;
-
-  // Info box
-  svg += `\n  <rect x="${padding.left}" y="${padding.top + plotHeight + 50}" width="350" height="60" fill="#161b22" stroke="#30363d" stroke-width="1" rx="4"/>`;
-  svg += `\n  <text x="${padding.left + 10}" y="${padding.top + plotHeight + 70}" class="subtitle" font-size="12">📊 Statistics</text>`;
-  const avgPerWeek = weekCount > 0 ? (totalContributions / weekCount).toFixed(1) : 0;
-  svg += `\n  <text x="${padding.left + 10}" y="${padding.top + plotHeight + 85}" class="value-label" font-size="11">Total Commits: ${totalContributions} | Weeks: ${weekCount} (${(weekCount/52).toFixed(1)}y) | Avg/Week: ${avgPerWeek}</text>`;
-
-  // Timestamp
   const timestamp = new Date().toISOString().split('T')[0];
-  svg += `\n  <text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
+  svg += `\n<text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
 
   svg += `\n</svg>`;
   return svg;
 }
 
-/**
- * Generate combined SVG
- */
 function generateCombinedSVG(data) {
-  const width = 1200;
-  const height = 500;
-  const padding = { top: 60, right: 40, bottom: 80, left: 100 };
+  const width = 1400;
+  const height = 600;
+  const padding = { top: 60, right: 40, bottom: 100, left: 100 };
   const plotWidth = width - padding.left - padding.right;
   const plotHeight = height - padding.top - padding.bottom;
 
@@ -394,42 +351,26 @@ function generateCombinedSVG(data) {
   const totalAll = Object.values(data).reduce((sum, d) => sum + d.totalContributions, 0);
 
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
-  <style>
-    .title { font-size: 22px; font-weight: bold; fill: #00d4ff; }
-    .subtitle { font-size: 14px; fill: #8b949e; }
-    .axis-label { font-size: 13px; fill: #8b949e; font-weight: 500; }
-    .value-label { font-size: 11px; fill: #c9d1d9; font-weight: bold; }
-    .grid-line { stroke: #30363d; stroke-width: 1; stroke-dasharray: 2,2; }
-    .axis-line { stroke: #30363d; stroke-width: 2; }
-    .line { stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; opacity: 0.8; }
-    .point { fill: currentColor; }
-    .bg { fill: #0d1117; }
-  </style>
+<style>
+.title { font-size: 22px; font-weight: bold; fill: #00d4ff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.subtitle { font-size: 14px; fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.axis-label { font-size: 12px; fill: #8b949e; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.grid-line { stroke: #30363d; stroke-width: 1; }
+.axis-line { stroke: #30363d; stroke-width: 2; }
+.bg { fill: #0d1117; }
+</style>
 
-  <!-- Background -->
-  <rect width="${width}" height="${height}" class="bg"/>
+<rect width="${width}" height="${height}" class="bg"/>
 
-  <!-- Title -->
-  <text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 Combined Contribution Graph (All 3 Accounts)</text>
-  <text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Combined Data | Total: ${totalAll} commits</text>
-
-  <!-- Grid lines and Y-axis labels -->`;
+<text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 Combined All 3 Accounts</text>
+<text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">Total: ${totalAll} commits | ${maxWeeks} weeks</text>`;
 
   // Y-axis
   for (let i = 0; i <= yMax; i += yStep) {
     const y = padding.top + plotHeight - (i / yMax) * plotHeight;
-    svg += `\n  <line x1="${padding.left}" y1="${y}" x2="${padding.left + plotWidth}" y2="${y}" class="grid-line"/>`;
-    svg += `\n  <text x="${padding.left - 10}" y="${y + 5}" class="axis-label" text-anchor="end">${i}</text>`;
-  }
-
-  // X-axis
-  for (let i = 0; i < maxWeeks; i += 4) {
-    const x = padding.left + (i / maxWeeks) * plotWidth;
-    svg += `\n  <line x1="${x}" y1="${padding.top + plotHeight}" x2="${x}" y2="${padding.top + plotHeight + 5}" class="grid-line"/>`;
-    if (i % 8 === 0) {
-      const weekNum = Math.floor(i / 4) * 4;
-      svg += `\n  <text x="${x}" y="${padding.top + plotHeight + 25}" class="axis-label" text-anchor="middle">W${weekNum}</text>`;
-    }
+    const yRounded = parseFloat(y.toFixed(2));
+    svg += `\n<line x1="${padding.left}" y1="${yRounded}" x2="${padding.left + plotWidth}" y2="${yRounded}" class="grid-line" stroke-dasharray="2,2"/>`;
+    svg += `\n<text x="${padding.left - 10}" y="${yRounded + 4}" class="axis-label" text-anchor="end">${i}</text>`;
   }
 
   // Individual lines
@@ -438,75 +379,122 @@ function generateCombinedSVG(data) {
     for (let i = 0; i < paddedData[account].length; i++) {
       const x = padding.left + (i / maxWeeks) * plotWidth;
       const y = padding.top + plotHeight - (paddedData[account][i] / yMax) * plotHeight;
-      pathData += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
+      const xRounded = parseFloat(x.toFixed(3));
+      const yRounded = parseFloat(y.toFixed(3));
+      pathData += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
     }
 
     const color = ACCOUNT_COLORS[account].color;
-    svg += `\n  <path d="${pathData}" class="line" stroke="${color}"/>`;
-
-    // Points
-    paddedData[account].forEach((val, i) => {
-      const x = padding.left + (i / maxWeeks) * plotWidth;
-      const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-      svg += `\n  <circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`;
-    });
+    svg += `\n<path d="${pathData}" stroke="${color}" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>`;
   });
 
-  // Combined line (thicker)
+  // Combined
   let combinedPath = '';
   for (let i = 0; i < combinedData.length; i++) {
     const x = padding.left + (i / maxWeeks) * plotWidth;
     const y = padding.top + plotHeight - (combinedData[i] / yMax) * plotHeight;
-    combinedPath += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
+    const xRounded = parseFloat(x.toFixed(3));
+    const yRounded = parseFloat(y.toFixed(3));
+    combinedPath += i === 0 ? `M${xRounded},${yRounded}` : ` L${xRounded},${yRounded}`;
   }
-  svg += `\n  <path d="${combinedPath}" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `\n<path d="${combinedPath}" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
 
-  // Combined points
-  combinedData.forEach((val, i) => {
-    const x = padding.left + (i / maxWeeks) * plotWidth;
-    const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-    svg += `\n  <circle cx="${x}" cy="${y}" r="4" fill="#00d4ff"/>`;
-    
-    if (val > 0 && (val === maxValue || i % 8 === 0 || val > yMax * 0.6)) {
-      svg += `\n  <text x="${x}" y="${y - 12}" class="value-label" text-anchor="middle" fill="#00d4ff">${val}</text>`;
-    }
-  });
+  svg += `\n<line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
+  svg += `\n<line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
 
-  // Axes
-  svg += `\n  <line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
-  svg += `\n  <line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
-
-  // Axis labels
-  svg += `\n  <text x="30" y="${padding.top + plotHeight / 2}" class="axis-label" text-anchor="middle" transform="rotate(-90 30 ${padding.top + plotHeight / 2})">Combined Commits per Week (${yStep}-point scale)</text>`;
-  svg += `\n  <text x="${padding.left + plotWidth / 2}" y="${height - 15}" class="axis-label" text-anchor="middle">All-Time (${maxWeeks} weeks ≈ ${(maxWeeks/52).toFixed(1)} years)</text>`;
-
-  // Legend
-  const legendY = padding.top + plotHeight + 50;
-  const legendItems = [
-    { label: 'syedasadabbas (Primary)', color: ACCOUNT_COLORS.syedasadabbas.color },
-    { label: 'syedprog (Research)', color: ACCOUNT_COLORS.syedprog.color },
-    { label: 'syedprogg (Learning)', color: ACCOUNT_COLORS.syedprogg.color },
-    { label: 'Combined Total', color: '#00d4ff' },
-  ];
-
-  let legendX = padding.left;
-  legendItems.forEach(item => {
-    svg += `\n  <circle cx="${legendX}" cy="${legendY}" r="5" fill="${item.color}"/>`;
-    svg += `\n  <text x="${legendX + 12}" y="${legendY + 4}" class="axis-label" font-size="12">${item.label}</text>`;
-    legendX += 280;
-  });
-
-  // Timestamp
   const timestamp = new Date().toISOString().split('T')[0];
-  svg += `\n  <text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
+  svg += `\n<text x="${width - 10}" y="${height - 10}" class="axis-label" text-anchor="end" font-size="11">Generated: ${timestamp}</text>`;
 
   svg += `\n</svg>`;
   return svg;
 }
 
+function generateMultiAccountStats(data) {
+  const totalCommits = Object.values(data).reduce((sum, d) => sum + d.totalContributions, 0);
+  const totalRepos = Object.values(data).reduce((sum, d) => sum + d.repositoriesCount, 0);
+  
+  // Aggregate languages
+  const allLanguages = {};
+  Object.values(data).forEach(d => {
+    Object.entries(d.languages).forEach(([lang, count]) => {
+      allLanguages[lang] = (allLanguages[lang] || 0) + count;
+    });
+  });
+
+  const topLanguages = Object.entries(allLanguages)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([lang, count]) => `* ${lang}: ${count} repositories`)
+    .join('\n');
+
+  const stats = `# 📊 Multi-Account Aggregated Statistics
+
+**Last Updated:** ${new Date().toISOString().split('T')[0]}
+
+## Summary
+
+* **Total Commits:** ${totalCommits} commits across all time
+* **Total Repositories:** ${totalRepos} repositories
+* **Active Accounts:** ${ACCOUNTS.length} GitHub accounts
+* **Combined Years:** ${Object.values(data).reduce((sum, d) => sum + d.yearsSinceCreation, 0)} years
+
+## Account Breakdown
+
+`;
+
+  Object.entries(data).forEach(([account, stats]) => {
+    const markdown = `### ${ACCOUNT_COLORS[account].name} (@${account})
+
+* **Account Created:** ${stats.accountCreated}
+* **Years Active:** ${stats.yearsSinceCreation}
+* **Total Commits:** ${stats.totalContributions} commits
+* **Current Year:** ${stats.currentYearTotal} commits
+* **Repositories:** ${stats.repositoriesCount}
+* **Weeks of Data:** ${stats.weeklyData.length}
+
+`;
+    return markdown;
+  });
+
+  const accountDetails = Object.entries(data)
+    .map(([account, stats]) => `### ${ACCOUNT_COLORS[account].name} (@${account})
+
+* **Account Created:** ${stats.accountCreated}
+* **Years Active:** ${stats.yearsSinceCreation}
+* **Total Commits:** ${stats.totalContributions} commits
+* **Current Year:** ${stats.currentYearTotal} commits
+* **Repositories:** ${stats.repositoriesCount}
+* **Weeks of Data:** ${stats.weeklyData.length}
+`)
+    .join('\n');
+
+  return `# 📊 Multi-Account Aggregated Statistics
+
+**Last Updated:** ${new Date().toISOString().split('T')[0]}
+
+## Summary
+
+* **Total Commits:** ${totalCommits} commits across all time
+* **Total Repositories:** ${totalRepos} repositories
+* **Active Accounts:** ${ACCOUNTS.length} GitHub accounts
+
+## Account Breakdown
+
+${accountDetails}
+
+## Top Languages
+
+${topLanguages}
+
+---
+
+*This file is auto-generated daily via GitHub Actions*
+`;
+}
+
 async function main() {
   try {
-    console.log('\n📊 Generating ALL-TIME Contribution Graphs (GitHub-Safe)...\n');
+    console.log('\n📊 Generating ALL-TIME Graphs with Correct Data...\n');
     
     const data = await fetchAllAccounts();
 
@@ -517,15 +505,16 @@ async function main() {
           account,
           data[account].weeklyData,
           data[account].totalContributions,
+          data[account].currentYearTotal,
           ACCOUNT_COLORS[account].color,
           data[account].accountCreated,
           data[account].yearsSinceCreation
         );
         const filename = `CONTRIBUTION_GRAPH_${account.toUpperCase()}.svg`;
         fs.writeFileSync(filename, svg, 'utf-8');
-        console.log(`✅ Generated ${filename}`);
+        console.log(`✅ ${filename}`);
       } catch (error) {
-        console.error(`❌ Failed to generate ${account} graph: ${error.message}`);
+        console.error(`❌ ${account}: ${error.message}`);
       }
     }
 
@@ -533,23 +522,23 @@ async function main() {
     try {
       const combinedSvg = generateCombinedSVG(data);
       fs.writeFileSync('CONTRIBUTION_GRAPH.svg', combinedSvg, 'utf-8');
-      console.log(`✅ Generated CONTRIBUTION_GRAPH.svg`);
+      console.log(`✅ CONTRIBUTION_GRAPH.svg`);
     } catch (error) {
-      console.error(`❌ Failed to generate combined graph: ${error.message}`);
+      console.error(`❌ Combined: ${error.message}`);
     }
 
-    console.log(`\n📊 Graph Generation Complete!\n`);
-    
-    console.log(`Account Summary:`);
-    Object.entries(data).forEach(([account, accountData]) => {
-      console.log(`  ✅ ${account}`);
-      console.log(`     Created: ${accountData.accountCreated}`);
-      console.log(`     Years active: ${accountData.yearsSinceCreation}`);
-      console.log(`     Total commits: ${accountData.totalContributions}`);
-      console.log(`     Weeks of data: ${accountData.weeklyData.length} (≈ ${(accountData.weeklyData.length/52).toFixed(1)} years)`);
-    });
+    // Generate MULTI_ACCOUNT_STATS.md
+    try {
+      const statsMarkdown = generateMultiAccountStats(data);
+      fs.writeFileSync('MULTI_ACCOUNT_STATS.md', statsMarkdown, 'utf-8');
+      console.log(`✅ MULTI_ACCOUNT_STATS.md`);
+    } catch (error) {
+      console.error(`❌ Stats: ${error.message}`);
+    }
+
+    console.log(`\n✅ Done!\n`);
   } catch (error) {
-    console.error('❌ Fatal error:', error.message);
+    console.error('❌ Error:', error.message);
     process.exit(1);
   }
 }
