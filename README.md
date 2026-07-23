@@ -177,8 +177,6 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
 <br/>
 <br/>
 
-<hr/>
-
 ---
 
 ## Featured Projects
