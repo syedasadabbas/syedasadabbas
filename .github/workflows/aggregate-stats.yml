@@ -39,13 +39,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Use GitHub-compatible v3 script (fixes rendering issues)
-          if [ -f .github/scripts/generate-contribution-graph-v3.js ]; then
+          # Use v4 all-time script
+          if [ -f .github/scripts/generate-contribution-graph-v4.js ]; then
+            node .github/scripts/generate-contribution-graph-v4.js
+          elif [ -f .github/scripts/generate-contribution-graph-v3.js ]; then
             node .github/scripts/generate-contribution-graph-v3.js
-          elif [ -f .github/scripts/generate-contribution-graph-v2-improved.js ]; then
-            node .github/scripts/generate-contribution-graph-v2-improved.js
-          elif [ -f .github/scripts/generate-contribution-graph-v2.js ]; then
-            node .github/scripts/generate-contribution-graph-v2.js
           else
             node .github/scripts/generate-contribution-graph.js
           fi
