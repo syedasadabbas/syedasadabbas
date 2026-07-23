@@ -339,42 +339,105 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 
 ### 📈 Combined Contribution Activity Graph - All 3 Accounts (All-Time)
 
-> **Real-time visualization showing complete contribution data from all three accounts - from account inception to present**
-> **Updated daily with live GitHub API data - No hardcoded values**
+> **Single unified visualization showing complete contribution data from all three accounts - from account inception to present**
 
 <div align="center">
 
 ![All-Time Contribution Graph](./CONTRIBUTION_GRAPH.svg)
 
-**Graph Features:**
-- ✅ **Real-time data** - Fetched from GitHub API daily
-- ✅ **Complete all-time history** (from account creation to present)
+**Combined Graph Features:**
+- ✅ **Real-time data** - All 3 accounts aggregated
+- ✅ **Color-coded lines** - Easy to identify each account
 - ✅ **Weekly aggregated data** (7-day periods)
-- ✅ **Vertical axis:** 10-point increments (optimal readability)
+- ✅ **Vertical axis:** Auto-scaled based on combined data
 - ✅ **Horizontal axis:** Weekly intervals (7-day separation)
-- ✅ **All 3 accounts** combined in single visualization
-- ✅ **4 data series:** Primary + Research + Learning + Combined Total
-- ✅ **Dynamic updates** - Regenerated every 24 hours at 00:00 UTC
+- ✅ **Value labels** - Shows commit counts at peak points
+- ✅ **Professional legend** - Color identifiers for each account
 
 </div>
 
 <br/>
 
-**📊 What the Graph Shows:**
+---
 
-| Account | Color | Represents |
-|---------|-------|-----------|
-| **@syedasadabbas** | 🔴 Red | Primary professional & learning projects |
-| **@syedprog** | 🟠 Orange | Leadpages work & research projects |
-| **@syedprogg** | 🟡 Gold | Learning projects & experiments |
-| **Combined Total** | 🔵 Cyan | Aggregated across all 3 accounts |
+### 📊 Individual Contribution Graphs - By Account
 
-**📌 Updates:**
+Each account has its own graph with individual color coding and optimized scaling based on that account's commit volume.
+
+#### **🔴 Primary Account (@syedasadabbas)**
+
+<div align="center">
+
+![syedasadabbas Contribution Graph](./CONTRIBUTION_GRAPH_SYEDASADABBAS.svg)
+
+**Account Details:**
+- **Focus:** Professional & Portfolio projects
+- **Key Projects:** Code Names Game, 3D Portfolio, AI/ML
+- **Color:** Red (#FF6B6B)
+- **Data:** All-time contributions with weekly breakdown
+- **Scaling:** Optimized for this account's commit volume
+
+</div>
+
+<br/>
+
+#### **🟠 Research & Work Account (@syedprog)**
+
+<div align="center">
+
+![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg)
+
+**Account Details:**
+- **Focus:** Leadpages work & research projects
+- **Key Projects:** Integration pipelines, React UI, NestJS APIs
+- **Color:** Orange (#FFA500)
+- **Data:** All-time contributions with weekly breakdown
+- **Scaling:** Optimized for this account's commit volume
+
+</div>
+
+<br/>
+
+#### **🟡 Learning Projects Account (@syedprogg)**
+
+<div align="center">
+
+![syedprogg Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROGG.svg)
+
+**Account Details:**
+- **Focus:** Learning & experimental projects
+- **Key Projects:** Synapsio, Hardware automation, Prototypes
+- **Color:** Gold (#FFD700)
+- **Data:** All-time contributions with weekly breakdown
+- **Scaling:** Optimized for this account's commit volume
+
+</div>
+
+<br/>
+
+---
+
+### 📈 Graph Features & Details
+
+**What Each Graph Shows:**
+- ✅ **Weekly aggregated data** - 7 days per data point
+- ✅ **All-time coverage** - From account creation to present
+- ✅ **Vertical scaling** - Auto-scaled based on account's max commits
+- ✅ **Clear numbers** - Values shown at peaks and milestones
+- ✅ **Grid lines** - Easy to read coordinate system
+- ✅ **Color identifiers** - Unique color for each account
+- ✅ **Timestamp** - Generation date visible on each graph
+
+**Axis Information:**
+- **Vertical:** Scales per account (10-point increments based on data)
+- **Horizontal:** Weekly intervals (W0, W4, W8, etc.)
+- **Values:** Commits per week clearly labeled
+
+**Data Updates:**
 - Generated automatically via GitHub Actions
-- Fetches real-time data from GitHub API
-- Updates every 24 hours (00:00 UTC)
-- No hardcoded values - 100% dynamic
-- Commit history available in repository
+- Updated every 24 hours at 00:00 UTC
+- Can be triggered manually anytime
+- 100% real GitHub API data
 
 <br/>
 
