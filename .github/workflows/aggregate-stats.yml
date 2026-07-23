@@ -39,11 +39,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Use v4 all-time script
-          if [ -f .github/scripts/generate-contribution-graph-v4.js ]; then
+          # Use v5 true all-time script
+          if [ -f .github/scripts/generate-contribution-graph-v5.js ]; then
+            node .github/scripts/generate-contribution-graph-v5.js
+          elif [ -f .github/scripts/generate-contribution-graph-v4.js ]; then
             node .github/scripts/generate-contribution-graph-v4.js
-          elif [ -f .github/scripts/generate-contribution-graph-v3.js ]; then
-            node .github/scripts/generate-contribution-graph-v3.js
           else
             node .github/scripts/generate-contribution-graph.js
           fi
