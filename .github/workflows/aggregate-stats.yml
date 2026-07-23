@@ -39,7 +39,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          node .github/scripts/generate-contribution-graph-v2.js
+          # Check if v2 script exists, if not use v1
+          if [ -f .github/scripts/generate-contribution-graph-v2.js ]; then
+            node .github/scripts/generate-contribution-graph-v2.js
+          else
+            node .github/scripts/generate-contribution-graph.js
+          fi
           
       - name: Commit and push changes
         env:
@@ -49,5 +54,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git config --local credential.helper store
           echo "https://x-access-token:${GH_TOKEN}@github.com" > ~/.git-credentials
-          git add MULTI_ACCOUNT_STATS.md CONTRIBUTION_GRAPH.svg CONTRIBUTION_GRAPH_SYEDASADABBAS.svg CONTRIBUTION_GRAPH_SYEDPROG.svg CONTRIBUTION_GRAPH_SYEDPROGG.svg
+          git add MULTI_ACCOUNT_STATS.md CONTRIBUTION_GRAPH.svg CONTRIBUTION_GRAPH_SYEDASADABBAS.svg CONTRIBUTION_GRAPH_SYEDPROG.svg CONTRIBUTION_GRAPH_SYEDPROGG.svg 2>/dev/null || git add MULTI_ACCOUNT_STATS.md CONTRIBUTION_GRAPH.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update multi-account contribution stats and graph" && git push origin main)
