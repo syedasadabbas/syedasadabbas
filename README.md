@@ -165,7 +165,7 @@ Shipped **6+ full-stack web applications** and **cross-platform mobile apps** (R
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="40" alt="linux logo"  />
   <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg" height="40" alt="aws logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" height="40" alt="aws logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" height="40" alt="github logo"  />
   <img width="12" />
@@ -250,14 +250,10 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
 ### 🔄 Aggregated View
 
 **Combined Statistics from All 3 Accounts:**
-- 📦 **40+ Repositories** across all accounts
-- 💻 **3,000+ Commits** total
-- 🔀 **100+ Pull Requests** across all projects
-- 🐛 **500+ Issues** tracked and resolved
 - 🌟 **Primary Languages**: Python, TypeScript, JavaScript
 - 🏗️ **Focus Areas**: Full-stack development, ML/DL, cloud infrastructure, agentic systems
 
-> 📖 **For real-time aggregated metrics**, see [MULTI_ACCOUNT_STATS.md](./MULTI_ACCOUNT_STATS.md) (auto-updated daily via GitHub Actions)
+> 📖 **Live commit totals, repository counts, and per-account breakdowns** are generated from the GitHub API and updated daily — see [MULTI_ACCOUNT_STATS.md](./MULTI_ACCOUNT_STATS.md).
 
 ---
 
@@ -385,7 +381,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 <div align="center">
 
-![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg?v=2)
+![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg)
 
 **Account Details:**
 - **Focus:** Leadpages work & research projects
