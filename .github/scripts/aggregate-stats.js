@@ -7,7 +7,7 @@
  * a markdown file with aggregated data.
  * 
  * Usage: node aggregate-stats.js
- * Environment Variables: GITHUB_TOKEN (required)
+ * Environment Variables: GH_TOKEN (required)
  */
 
 const https = require('https');
@@ -15,11 +15,11 @@ const fs = require('fs');
 
 // Configuration
 const ACCOUNTS = ['syedasadabbas', 'syedprog', 'syedprogg'];
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GH_TOKEN = process.env.GH_TOKEN;
 const OUTPUT_FILE = 'MULTI_ACCOUNT_STATS.md';
 
-if (!GITHUB_TOKEN) {
-  console.error('Error: GITHUB_TOKEN environment variable is required');
+if (!GH_TOKEN) {
+  console.error('Error: GH_TOKEN environment variable is required');
   process.exit(1);
 }
 
@@ -38,7 +38,7 @@ function githubGraphQLQuery(query, variables = {}) {
       path: '/graphql',
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+        'Authorization': `Bearer ${GH_TOKEN}`,
         'Content-Type': 'application/json',
         'Content-Length': data.length,
         'User-Agent': 'GitHub-Stats-Aggregator',
