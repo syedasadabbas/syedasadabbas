@@ -1,0 +1,59 @@
+name: Aggregate Multi-Account Stats
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  aggregate-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: |
+          npm install axios dotenv
+          
+      - name: Generate aggregated stats
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          node .github/scripts/aggregate-stats.js
+          
+      - name: Generate contribution graph SVGs
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          # Use FINAL script (V2 design + V5 all-time data)
+          if [ -f .github/scripts/generate-contribution-graph.js ]; then
+            node .github/scripts/generate-contribution-graph.js
+          else
+            echo "Error: generate-contribution-graph.js not found"
+            exit 1
+          fi
+          
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git config --local credential.helper store
+          echo "https://x-access-token:${GH_TOKEN}@github.com" > ~/.git-credentials
+          git add MULTI_ACCOUNT_STATS.md CONTRIBUTION_GRAPH.svg CONTRIBUTION_GRAPH_SYEDASADABBAS.svg CONTRIBUTION_GRAPH_SYEDPROG.svg CONTRIBUTION_GRAPH_SYEDPROGG.svg 2>/dev/null || git add MULTI_ACCOUNT_STATS.md CONTRIBUTION_GRAPH.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update multi-account contribution stats and graph" && git push origin main)
