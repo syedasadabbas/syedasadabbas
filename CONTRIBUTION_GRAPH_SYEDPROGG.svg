@@ -11,7 +11,6 @@
       .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
       .point { fill: #FFD700; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
       .bg { fill: #0d1117; }
-      .error-text { font-size: 14px; fill: #ff6b6b; font-weight: bold; }
     </style>
   </defs>
 
@@ -20,7 +19,9 @@
 
   <!-- Title -->
   <text x="600" y="35" class="title" text-anchor="middle">📊 Learning Projects (@syedprogg)</text>
-  <text x="600" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: 654 commits</text>
+  <text x="600" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: 654 commits | 1 years active since 2026-04-27</text>
+
+  <!-- Grid lines and Y-axis labels -->
   <line x1="100" y1="420" x2="1160" y2="420" class="grid-line"/>
   <text x="90" y="425" class="axis-label" text-anchor="end">0</text>
   <line x1="100" y1="384" x2="1160" y2="384" class="grid-line"/>
@@ -128,9 +129,9 @@
   <line x1="100" y1="60" x2="100" y2="420" class="axis-line"/>
   <line x1="100" y1="420" x2="1160" y2="420" class="axis-line"/>
   <text x="30" y="240" class="axis-label" text-anchor="middle" transform="rotate(-90 30 240)">Commits per Week (10-point scale)</text>
-  <text x="630" y="485" class="axis-label" text-anchor="middle">Time Period (Weekly Intervals - 7 days)</text>
+  <text x="630" y="485" class="axis-label" text-anchor="middle">All-Time (53 weeks ≈ 1.0 years)</text>
   <rect x="100" y="470" width="350" height="60" fill="#161b22" stroke="#30363d" stroke-width="1" rx="4"/>
   <text x="110" y="490" class="subtitle" font-size="12">📊 Statistics</text>
-  <text x="110" y="505" class="value-label" font-size="11">Total Commits: 654 | Weeks of Data: 53 | Avg/Week: 12</text>
+  <text x="110" y="505" class="value-label" font-size="11">Total Commits: 654 | Weeks: 53 (1.0y) | Avg/Week: 12.3</text>
   <text x="1190" y="490" class="axis-label" text-anchor="end" font-size="11">Generated: 2026-07-23</text>
 </svg>
