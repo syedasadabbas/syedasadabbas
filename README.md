@@ -334,30 +334,42 @@ Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-tim
 
 ### 📈 Combined Contribution Activity Graph - All 3 Accounts (All-Time)
 
-> **Single unified visualization showing complete contribution data from all three accounts - from account inception to present**
+> **Real-time visualization showing complete contribution data from all three accounts - from account inception to present**
+> **Updated daily with live GitHub API data - No hardcoded values**
 
 <div align="center">
 
-**🔗 [View Full Interactive All-Time Graph](./contribution-graph-all-time.html)**
+![All-Time Contribution Graph](./CONTRIBUTION_GRAPH.svg)
 
-**Key Features:**
-- ✅ Complete all-time history (from account creation to present)
-- ✅ Weekly aggregated data (7-day intervals)
-- ✅ Vertical axis: 10-point increments (for clarity)
-- ✅ Horizontal axis: Weekly separation (not daily)
-- ✅ All 3 accounts combined in single visualization
-- ✅ Interactive tooltips and hover effects
-- ✅ Account comparison chart included
+**Graph Features:**
+- ✅ **Real-time data** - Fetched from GitHub API daily
+- ✅ **Complete all-time history** (from account creation to present)
+- ✅ **Weekly aggregated data** (7-day periods)
+- ✅ **Vertical axis:** 10-point increments (optimal readability)
+- ✅ **Horizontal axis:** Weekly intervals (7-day separation)
+- ✅ **All 3 accounts** combined in single visualization
+- ✅ **4 data series:** Primary + Research + Learning + Combined Total
+- ✅ **Dynamic updates** - Regenerated every 24 hours at 00:00 UTC
 
 </div>
 
 <br/>
 
-**📌 Note:** The interactive all-time graph shows:
-- Primary (@syedasadabbas): Complete history from day 1
-- Research (@syedprog): All work and research contributions
-- Learning (@syedprogg): All learning and experimental projects
-- Combined Total: Aggregated view across all accounts
+**📊 What the Graph Shows:**
+
+| Account | Color | Represents |
+|---------|-------|-----------|
+| **@syedasadabbas** | 🔴 Red | Primary professional & learning projects |
+| **@syedprog** | 🟠 Orange | Leadpages work & research projects |
+| **@syedprogg** | 🟡 Gold | Learning projects & experiments |
+| **Combined Total** | 🔵 Cyan | Aggregated across all 3 accounts |
+
+**📌 Updates:**
+- Generated automatically via GitHub Actions
+- Fetches real-time data from GitHub API
+- Updates every 24 hours (00:00 UTC)
+- No hardcoded values - 100% dynamic
+- Commit history available in repository
 
 <br/>
 
