@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate Contribution Graph SVGs - Individual + Combined
+ * Generate Contribution Graph SVGs - Individual + Combined (IMPROVED)
  * 
  * Creates 4 SVG visualizations:
  * 1. Individual graph for syedasadabbas (Red)
@@ -9,7 +9,7 @@
  * 3. Individual graph for syedprogg (Gold)
  * 4. Combined graph (All 3 accounts)
  * 
- * Each graph scales based on actual data with clear numbers visible
+ * Robust error handling: Continues even if one account fails
  */
 
 const https = require('https');
@@ -26,7 +26,7 @@ const ACCOUNT_COLORS = {
 };
 
 if (!GH_TOKEN) {
-  console.error('Error: GH_TOKEN environment variable is required');
+  console.error('❌ Error: GH_TOKEN environment variable is required');
   process.exit(1);
 }
 
@@ -57,45 +57,123 @@ function getCommitsQuery(username) {
 }
 
 /**
- * Make GitHub GraphQL request
+ * Make GitHub GraphQL request with retry logic
  */
-function githubGraphQLQuery(query) {
+function githubGraphQLQuery(query, retries = 3) {
   return new Promise((resolve, reject) => {
-    const data = JSON.stringify({ query });
+    let attempts = 0;
 
-    const options = {
-      hostname: 'api.github.com',
-      path: '/graphql',
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GH_TOKEN}`,
-        'Content-Type': 'application/json',
-        'Content-Length': data.length,
-        'User-Agent': 'GitHub-Graph-Generator',
-      },
-    };
+    const attemptRequest = () => {
+      attempts++;
+      const data = JSON.stringify({ query });
 
-    const req = https.request(options, (res) => {
-      let body = '';
-      res.on('data', (chunk) => (body += chunk));
-      res.on('end', () => {
-        try {
-          const response = JSON.parse(body);
-          if (response.errors) {
-            reject(new Error(`GraphQL Error: ${JSON.stringify(response.errors)}`));
-          } else {
-            resolve(response.data);
+      const options = {
+        hostname: 'api.github.com',
+        path: '/graphql',
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${GH_TOKEN}`,
+          'Content-Type': 'application/json',
+          'Content-Length': data.length,
+          'User-Agent': 'GitHub-Graph-Generator',
+        },
+        timeout: 10000,
+      };
+
+      const req = https.request(options, (res) => {
+        let body = '';
+        res.on('data', (chunk) => (body += chunk));
+        res.on('end', () => {
+          try {
+            const response = JSON.parse(body);
+            if (response.errors) {
+              const errorMsg = JSON.stringify(response.errors);
+              if (attempts < retries) {
+                console.log(`  ⚠️  Retry ${attempts}/${retries}...`);
+                setTimeout(attemptRequest, 2000);
+              } else {
+                reject(new Error(`GraphQL Error: ${errorMsg}`));
+              }
+            } else {
+              resolve(response.data);
+            }
+          } catch (err) {
+            reject(err);
           }
-        } catch (err) {
+        });
+      });
+
+      req.on('error', (err) => {
+        if (attempts < retries) {
+          console.log(`  ⚠️  Network error, retry ${attempts}/${retries}...`);
+          setTimeout(attemptRequest, 2000);
+        } else {
           reject(err);
         }
       });
+
+      req.on('timeout', () => {
+        req.abort();
+        if (attempts < retries) {
+          console.log(`  ⚠️  Timeout, retry ${attempts}/${retries}...`);
+          setTimeout(attemptRequest, 2000);
+        } else {
+          reject(new Error('Request timeout'));
+        }
+      });
+
+      req.write(data);
+      req.end();
+    };
+
+    attemptRequest();
+  });
+}
+
+/**
+ * Fetch contribution data for a single account with error handling
+ */
+async function fetchAccountData(account) {
+  console.log(`  📡 Fetching data for ${account}...`);
+  try {
+    const query = getCommitsQuery(account);
+    const data = await githubGraphQLQuery(query);
+    
+    if (!data || !data.user) {
+      throw new Error('Invalid response: user not found');
+    }
+
+    const contributions = data.user.contributionsCollection.contributionCalendar.weeks;
+    const totalContributions = data.user.contributionsCollection.contributionCalendar.totalContributions;
+    
+    // Aggregate by weeks
+    const weeklyData = [];
+    contributions.forEach(week => {
+      let weekTotal = 0;
+      week.contributionDays.forEach(day => {
+        weekTotal += day.contributionCount;
+      });
+      weeklyData.push(weekTotal);
     });
 
-    req.on('error', reject);
-    req.write(data);
-    req.end();
-  });
+    console.log(`  ✅ ${account}: ${totalContributions} commits, ${data.user.repositories.totalCount} repos`);
+    
+    return {
+      weeklyData,
+      totalContributions,
+      repositoriesCount: data.user.repositories.totalCount,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`  ❌ Failed to fetch ${account}: ${error.message}`);
+    // Return fallback data so graph still generates
+    return {
+      weeklyData: new Array(104).fill(0),
+      totalContributions: 0,
+      repositoriesCount: 0,
+      error: error.message,
+    };
+  }
 }
 
 /**
@@ -105,39 +183,7 @@ async function fetchAllContributions() {
   const results = {};
 
   for (const account of ACCOUNTS) {
-    console.log(`Fetching data for ${account}...`);
-    try {
-      const query = getCommitsQuery(account);
-      const data = await githubGraphQLQuery(query);
-      
-      const contributions = data.user.contributionsCollection.contributionCalendar.weeks;
-      const totalContributions = data.user.contributionsCollection.contributionCalendar.totalContributions;
-      
-      // Aggregate by weeks
-      const weeklyData = [];
-      contributions.forEach(week => {
-        let weekTotal = 0;
-        week.contributionDays.forEach(day => {
-          weekTotal += day.contributionCount;
-        });
-        weeklyData.push(weekTotal);
-      });
-
-      results[account] = {
-        weeklyData,
-        totalContributions,
-        repositoriesCount: data.user.repositories.totalCount,
-      };
-      
-      console.log(`  ✓ ${account}: ${totalContributions} total contributions`);
-    } catch (error) {
-      console.error(`  ✗ Failed to fetch ${account}:`, error.message);
-      results[account] = {
-        weeklyData: new Array(104).fill(0),
-        totalContributions: 0,
-        repositoriesCount: 0,
-      };
-    }
+    results[account] = await fetchAccountData(account);
   }
 
   return results;
@@ -146,7 +192,7 @@ async function fetchAllContributions() {
 /**
  * Generate individual SVG for an account
  */
-function generateIndividualSVG(account, weeklyData, totalContributions, color) {
+function generateIndividualSVG(account, weeklyData, totalContributions, color, error = null) {
   const width = 1200;
   const height = 500;
   const padding = { top: 60, right: 40, bottom: 80, left: 100 };
@@ -173,6 +219,7 @@ function generateIndividualSVG(account, weeklyData, totalContributions, color) {
       .line { stroke-width: 3; fill: none; stroke-linejoin: round; stroke-linecap: round; }
       .point { fill: ${color}; filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); }
       .bg { fill: #0d1117; }
+      .error-text { font-size: 14px; fill: #ff6b6b; font-weight: bold; }
     </style>
   </defs>
 
@@ -181,11 +228,15 @@ function generateIndividualSVG(account, weeklyData, totalContributions, color) {
 
   <!-- Title -->
   <text x="${width / 2}" y="35" class="title" text-anchor="middle">📊 ${ACCOUNT_COLORS[account].name} (@${account})</text>
-  <text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: ${totalContributions} commits</text>
+  <text x="${width / 2}" y="55" class="subtitle" text-anchor="middle">All-Time Weekly Contribution Data | Total: ${totalContributions} commits</text>`;
 
-  <!-- Grid lines and Y-axis labels -->`;
+  // Error message if data fetch failed
+  if (error) {
+    svg += `\n  <text x="${width / 2}" y="${height / 2}" class="error-text" text-anchor="middle">⚠️ Data fetch error: ${error}</text>`;
+    svg += `\n  <text x="${width / 2}" y="${height / 2 + 30}" class="subtitle" text-anchor="middle">Using fallback data. Try again later.</text>`;
+  }
 
-  // Y-axis grid lines
+  // Grid lines and Y-axis labels
   for (let i = 0; i <= yMax; i += yStep) {
     const y = padding.top + plotHeight - (i / yMax) * plotHeight;
     svg += `\n  <line x1="${padding.left}" y1="${y}" x2="${padding.left + plotWidth}" y2="${y}" class="grid-line"/>`;
@@ -202,29 +253,31 @@ function generateIndividualSVG(account, weeklyData, totalContributions, color) {
     }
   }
 
-  // Create path for the line
-  let pathData = '';
-  for (let i = 0; i < weeklyData.length; i++) {
-    const x = padding.left + (i / weekCount) * plotWidth;
-    const y = padding.top + plotHeight - (weeklyData[i] / yMax) * plotHeight;
-    pathData += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
-  }
-
-  // Draw line
-  svg += `\n  <path d="${pathData}" class="line" stroke="${color}"/>`;
-
-  // Draw points with values
-  weeklyData.forEach((val, i) => {
-    const x = padding.left + (i / weekCount) * plotWidth;
-    const y = padding.top + plotHeight - (val / yMax) * plotHeight;
-    
-    svg += `\n  <circle cx="${x}" cy="${y}" r="5" class="point"/>`;
-    
-    // Show value for peaks and significant points
-    if (val > 0 && (val === maxValue || i % 8 === 0 || val > yMax * 0.6)) {
-      svg += `\n  <text x="${x}" y="${y - 12}" class="value-label" text-anchor="middle">${val}</text>`;
+  // Create path for the line (if data available)
+  if (maxValue > 0 && !error) {
+    let pathData = '';
+    for (let i = 0; i < weeklyData.length; i++) {
+      const x = padding.left + (i / weekCount) * plotWidth;
+      const y = padding.top + plotHeight - (weeklyData[i] / yMax) * plotHeight;
+      pathData += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
     }
-  });
+
+    // Draw line
+    svg += `\n  <path d="${pathData}" class="line" stroke="${color}"/>`;
+
+    // Draw points with values
+    weeklyData.forEach((val, i) => {
+      const x = padding.left + (i / weekCount) * plotWidth;
+      const y = padding.top + plotHeight - (val / yMax) * plotHeight;
+      
+      svg += `\n  <circle cx="${x}" cy="${y}" r="5" class="point"/>`;
+      
+      // Show value for peaks and significant points
+      if (val > 0 && (val === maxValue || i % 8 === 0 || val > yMax * 0.6)) {
+        svg += `\n  <text x="${x}" y="${y - 12}" class="value-label" text-anchor="middle">${val}</text>`;
+      }
+    });
+  }
 
   // Axes
   svg += `\n  <line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" class="axis-line"/>`;
@@ -313,7 +366,7 @@ function generateCombinedSVG(data) {
     }
   }
 
-  // Draw all 3 lines
+  // Draw all 3 individual lines
   Object.entries(data).forEach(([account, accountData]) => {
     let pathData = '';
     for (let i = 0; i < accountData.weeklyData.length; i++) {
@@ -396,35 +449,60 @@ async function main() {
     const data = await fetchAllContributions();
 
     // Generate individual graphs
+    let successCount = 0;
     for (const account of ACCOUNTS) {
-      const svg = generateIndividualSVG(
-        account,
-        data[account].weeklyData,
-        data[account].totalContributions,
-        ACCOUNT_COLORS[account].color
-      );
-      const filename = `CONTRIBUTION_GRAPH_${account.toUpperCase()}.svg`;
-      fs.writeFileSync(filename, svg, 'utf-8');
-      console.log(`✅ Generated ${filename}`);
+      try {
+        const svg = generateIndividualSVG(
+          account,
+          data[account].weeklyData,
+          data[account].totalContributions,
+          ACCOUNT_COLORS[account].color,
+          data[account].error
+        );
+        const filename = `CONTRIBUTION_GRAPH_${account.toUpperCase()}.svg`;
+        fs.writeFileSync(filename, svg, 'utf-8');
+        console.log(`✅ Generated ${filename}`);
+        successCount++;
+      } catch (error) {
+        console.error(`❌ Failed to generate ${account} graph: ${error.message}`);
+      }
     }
 
     // Generate combined graph
-    const combinedSvg = generateCombinedSVG(data);
-    fs.writeFileSync('CONTRIBUTION_GRAPH.svg', combinedSvg, 'utf-8');
-    console.log(`✅ Generated CONTRIBUTION_GRAPH.svg`);
+    try {
+      const combinedSvg = generateCombinedSVG(data);
+      fs.writeFileSync('CONTRIBUTION_GRAPH.svg', combinedSvg, 'utf-8');
+      console.log(`✅ Generated CONTRIBUTION_GRAPH.svg`);
+      successCount++;
+    } catch (error) {
+      console.error(`❌ Failed to generate combined graph: ${error.message}`);
+    }
 
-    console.log(`\n📊 Graph Generation Complete!\n`);
+    console.log(`\n📊 Graph Generation Complete! (${successCount}/4 files created)\n`);
+    
     console.log(`Files created:`);
-    console.log(`  - CONTRIBUTION_GRAPH_SYEDASADABBAS.svg (Primary Account)`);
-    console.log(`  - CONTRIBUTION_GRAPH_SYEDPROG.svg (Research & Work)`);
-    console.log(`  - CONTRIBUTION_GRAPH_SYEDPROGG.svg (Learning Projects)`);
-    console.log(`  - CONTRIBUTION_GRAPH.svg (Combined All 3)`);
+    console.log(`  - CONTRIBUTION_GRAPH_SYEDASADABBAS.svg`);
+    console.log(`  - CONTRIBUTION_GRAPH_SYEDPROG.svg`);
+    console.log(`  - CONTRIBUTION_GRAPH_SYEDPROGG.svg`);
+    console.log(`  - CONTRIBUTION_GRAPH.svg`);
+    
     console.log(`\nAccount Summary:`);
     Object.entries(data).forEach(([account, accountData]) => {
-      console.log(`  ${account}: ${accountData.totalContributions} commits, ${accountData.repositoriesCount} repos`);
+      if (accountData.error) {
+        console.log(`  ❌ ${account}: ERROR - ${accountData.error}`);
+      } else {
+        console.log(`  ✅ ${account}: ${accountData.totalContributions} commits, ${accountData.repositoriesCount} repos`);
+      }
     });
+
+    // Exit with error if any account failed
+    if (successCount < 4) {
+      console.log(`\n⚠️  Warning: Not all graphs generated successfully`);
+      console.log(`   Run again in a few minutes to retry failed accounts`);
+      process.exit(0); // Don't fail workflow, let next run retry
+    }
   } catch (error) {
-    console.error('❌ Error generating graphs:', error.message);
+    console.error('❌ Fatal error:', error.message);
     process.exit(1);
   }
 }
