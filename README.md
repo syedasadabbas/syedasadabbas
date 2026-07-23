@@ -292,15 +292,6 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 
 ![All-Time Contribution Graph](./CONTRIBUTION_GRAPH.svg)
 
-**Combined Graph Features:**
-- ✅ **Real-time data** - All 3 accounts aggregated
-- ✅ **Color-coded lines** - Easy to identify each account
-- ✅ **Weekly aggregated data** (7-day periods)
-- ✅ **Vertical axis:** Auto-scaled based on combined data
-- ✅ **Horizontal axis:** Weekly intervals (7-day separation)
-- ✅ **Value labels** - Shows commit counts at peak points
-- ✅ **Professional legend** - Color identifiers for each account
-
 </div>
 
 <br/>
