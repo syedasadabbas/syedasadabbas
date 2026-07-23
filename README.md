@@ -284,19 +284,6 @@ View <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for the compl
 
 ---
 
-#### **Learning Projects Account (@syedprogg)**
-
-<a href="https://github.com/syedprogg">
-  <img alt="syedprogg GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=syedprogg&show_icons=true&include_all_commits=true&count_private=true&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88&hide=contribs" height="195" width="48%"/>
-</a>
-<a href="https://github.com/syedprogg">
-  <img alt="syedprogg Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprogg&langs_count=12&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="195" width="48%"/>
-</a>
-
-<br/>
-
----
-
 ### Combined Contribution Activity Graph - All 3 Accounts (All-Time)
 
 > **Single unified visualization showing complete contribution data from all three accounts - from account inception to present**
