@@ -396,38 +396,6 @@ Each account has its own graph with individual color coding and optimized scalin
 **Note:** Streak stats above are **live and update in real-time** from GitHub contribution data. Refresh this page to see current streaks.
 
 <br/>
-
----
-
-### Complete Contribution Timeline - All Accounts (Interactive)
-
-> **For complete all-time contribution calendars with interactive animations and live data, visit GitHub profiles directly:**
-
-<p align="center">
-
-**🔗 [Primary: syedasadabbas](https://github.com/syedasadabbas)**  
-Live stats | All-time contributions | Interactive calendar
-
-**🔗 [Research & Work: syedprog](https://github.com/syedprog)**  
-Live stats | Complete history | Interactive calendar
-
-**🔗 [Learning: syedprogg](https://github.com/syedprogg)**  
-Live stats | Full timeline | Interactive calendar
-
-</p>
-
-<br/>
-
-**Interactive Features on GitHub Profiles (Always Current):**
-- ✅ Real-time contribution calendars (updated daily)
-- ✅ Live-updating statistics
-- ✅ Current streak counts
-- ✅ All-time contribution history
-- ✅ Animated interactions
-- ✅ Day-by-day breakdown with exact counts
-
-<br/>
-
 ---
 
 ### Data Sources & Update Frequency
