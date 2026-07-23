@@ -39,13 +39,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Use FINAL script (V2 design + V5 all-time data)
-          if [ -f .github/scripts/generate-contribution-graph.js ]; then
-            node .github/scripts/generate-contribution-graph.js
-          else
-            echo "Error: generate-contribution-graph.js not found"
-            exit 1
-          fi
+          node .github/scripts/generate-contribution-graph.js
           
       - name: Commit and push changes
         env:
