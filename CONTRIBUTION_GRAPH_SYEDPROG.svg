@@ -198,7 +198,7 @@
 <circle cx="1038.571" cy="426.667" r="4" class="point"/>
 <text x="1038.571" y="414.667" class="point-label" text-anchor="middle">4</text>
 <circle cx="1051.429" cy="261.667" r="4" class="point"/>
-<text x="1051.429" y="249.66699999999997" class="point-label" text-anchor="middle">13</text>
+<text x="1051.429" y="249.66" class="point-label" text-anchor="middle">13</text>
 <circle cx="1064.286" cy="353.333" r="4" class="point"/>
 <text x="1064.286" y="341.333" class="point-label" text-anchor="middle">8</text>
 <circle cx="1077.143" cy="390" r="4" class="point"/>
@@ -206,7 +206,7 @@
 <circle cx="1090" cy="371.667" r="4" class="point"/>
 <text x="1090" y="359.667" class="point-label" text-anchor="middle">7</text>
 <circle cx="1102.857" cy="261.667" r="4" class="point"/>
-<text x="1102.857" y="249.66699999999997" class="point-label" text-anchor="middle">13</text>
+<text x="1102.857" y="249.66" class="point-label" text-anchor="middle">13</text>
 <circle cx="1115.714" cy="316.667" r="4" class="point"/>
 <text x="1115.714" y="304.667" class="point-label" text-anchor="middle">10</text>
 <circle cx="1128.571" cy="280" r="4" class="point"/>
