@@ -385,7 +385,7 @@ Each account has its own graph with individual color coding and optimized scalin
 
 <div align="center">
 
-![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg)
+![syedprog Contribution Graph](./CONTRIBUTION_GRAPH_SYEDPROG.svg?v=2)
 
 **Account Details:**
 - **Focus:** Leadpages work & research projects
