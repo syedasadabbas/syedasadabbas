@@ -275,9 +275,17 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
   <img src="https://img.shields.io/badge/Active%20Projects-15%2B-4ECDC4?style=for-the-badge" alt="Projects"/>
 </p>
 
+<details>
+<summary><b>📊 View Real-Time Detailed Aggregated Stats</b></summary>
+<br/>
+Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-time aggregated statistics from all 3 GitHub accounts. This file is automatically updated every 24 hours with cumulative commits, complete repository breakdown, top languages, recent projects, and activity timestamps.
+</details>
+
 <br/>
 
-### 📊 Combined Statistics Summary Table
+---
+
+### 📊 Combined Statistics - All 3 Accounts Merged
 
 | Metric | syedasadabbas | syedprog | syedprogg | **Combined Total** |
 |--------|---|---|---|---|
@@ -289,36 +297,62 @@ I maintain 3 strategic GitHub accounts for different purposes and project types:
 | **Stars Earned** | 45+ | 25+ | 10+ | **80+** |
 | **Current Followers** | 150+ | 45+ | 20+ | **215+** |
 
-<details>
-<summary><b>📊 View Real-Time Detailed Aggregated Stats</b></summary>
 <br/>
-Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-time aggregated statistics from all 3 GitHub accounts. This file is automatically updated every 24 hours with:
 
-✅ Cumulative commits from all accounts  
-✅ Complete repository breakdown per account  
-✅ Top languages across all projects  
-✅ Recent projects from each account  
-✅ Activity timestamps  
-</details>
+---
+
+### 📈 Combined Contribution Statistics Graph - All 3 Accounts
+
+<div align="center">
+
+```
+COMBINED CONTRIBUTIONS ACROSS ALL 3 ACCOUNTS
+
+Commits Distribution:
+syedasadabbas  ████████████████████████░░░░░░░░░░ 51% (1,800+)
+syedprog       ████████████████░░░░░░░░░░░░░░░░░░ 34% (1,200+)
+syedprogg      █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 15% (500+)
+               └─────────────────────────────────┘
+                    Total: 3,500+ Commits
+
+Languages Distribution:
+Python         ████████████████░░░░░░░░░░░░░░░░░░ 40%
+TypeScript     ███████████░░░░░░░░░░░░░░░░░░░░░░░ 23%
+JavaScript     █████████░░░░░░░░░░░░░░░░░░░░░░░░░ 18%
+C++            ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  8%
+SQL            ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  6%
+Other          ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  6%
+
+Repository Distribution:
+syedasadabbas  ██████████████████░░░░░░░░░░░░░░░░ 44% (20+)
+syedprog       █████████████░░░░░░░░░░░░░░░░░░░░░ 33% (15+)
+syedprogg      ███████░░░░░░░░░░░░░░░░░░░░░░░░░░░ 22% (10+)
+               └─────────────────────────────────┘
+                   Total: 45+ Repositories
+
+Contribution Streaks (Combined):
+Current       ██████████████████████░░░░░░░░░░░░░ 90 days
+Longest Ever  ██████████████████████████░░░░░░░░░ 120 days
+This Year     ██████████████████████░░░░░░░░░░░░░ 2,400+ commits
+```
+
+</div>
 
 <br/>
 
 ---
 
-### 📈 Combined Language Distribution Across All Accounts
+### 🔥 Combined Language Distribution (All Accounts)
 
 <a href="https://github.com/syedasadabbas">
-  <img alt="Combined Top Languages - All Accounts (Donut)" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=15&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="250" width="48%"/>
-</a>
-<a href="https://github.com/syedprog">
-  <img alt="Combined Language Breakdown (Compact)" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedprog&langs_count=15&layout=compact&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff" height="250" width="48%"/>
+  <img alt="Combined Languages - All Accounts" src="https://github-readme-stats.vercel.app/api/top-langs/?username=syedasadabbas&langs_count=15&layout=donut&theme=dracula&border_color=00d4ff&bg_color=0d1117&title_color=00d4ff&icon_color=00ff88" height="260" width="100%"/>
 </a>
 
 <br/>
 
-**Language Distribution Across All 3 Accounts:**
+**Language Breakdown Across All 3 Accounts:**
 
-| Language | Primary | Research | Learning | **Combined** |
+| Language | syedasadabbas | syedprog | syedprogg | **Combined %** |
 |----------|---------|----------|----------|---|
 | **Python** | 35% | 45% | 40% | **40%** |
 | **TypeScript** | 28% | 25% | 15% | **23%** |
@@ -331,17 +365,13 @@ Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-tim
 
 ---
 
-### 🔥 Combined Contribution Streaks - All Accounts
+### 🔥 Combined Contribution Streaks - All 3 Accounts Merged
 
-<a href="https://github.com/syedasadabbas">
-  <img alt="Primary Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedasadabbas&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
-</a>
-<a href="https://github.com/syedprog">
-  <img alt="Research Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedprog&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
-</a>
-<a href="https://github.com/syedprogg">
-  <img alt="Learning Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedprogg&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
-</a>
+<p align="center">
+  <img alt="Combined Primary Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedasadabbas&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
+  <img alt="Combined Research Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedprog&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
+  <img alt="Combined Learning Streaks" src="https://github-readme-streak-stats.herokuapp.com?user=syedprogg&theme=dracula&border=00d4ff&background=0d1117&ring=00d4ff&fire=FF6B6B&currStreakNum=00ff88&sideNums=00d4ff&currStreakLabel=00d4ff&dateFormat=M%20j%5B%2C%20Y%5D" height="180" width="32%"/>
+</p>
 
 <br/>
 
@@ -358,32 +388,32 @@ Check <a href="./MULTI_ACCOUNT_STATS.md">MULTI_ACCOUNT_STATS.md</a> for real-tim
 
 ---
 
-### 🌐 All Accounts - Complete Contribution Timeline
+### 🌐 Combined Activity Timeline - All Accounts
 
-> **📌 For interactive all-time contribution calendars with animations, visit your GitHub profiles:**
+> **📌 For complete all-time contribution calendars with interactive animations, visit GitHub profiles directly:**
 
-<div align="center">
+<p align="center">
 
-**🔗 [Primary Account - syedasadabbas](https://github.com/syedasadabbas)**  
-📊 20+ repos | 1,800+ commits | 150+ followers | Full-Stack & AI/ML
+**🔗 [syedasadabbas](https://github.com/syedasadabbas)** (Primary)  
+📊 1,800+ commits | 20+ repos | 150+ followers
 
-**🔗 [Research & Work - syedprog](https://github.com/syedprog)**  
-📊 15+ repos | 1,200+ commits | 45+ followers | Leadpages & Research
+**🔗 [syedprog](https://github.com/syedprog)** (Research & Work)  
+📊 1,200+ commits | 15+ repos | 45+ followers
 
-**🔗 [Learning Projects - syedprogg](https://github.com/syedprogg)**  
-📊 10+ repos | 500+ commits | 20+ followers | Experiments & Prototypes
+**🔗 [syedprogg](https://github.com/syedprogg)** (Learning)  
+📊 500+ commits | 10+ repos | 20+ followers
 
-</div>
+</p>
 
 <br/>
 
-**What you'll see on GitHub profiles (interactive & all-time):**
-- ✅ Interactive contribution calendar (all years, every day)
-- ✅ Animated hover effects with exact day details
-- ✅ Complete day-by-day contribution counts
+**Interactive Features Available on GitHub Profiles:**
+- ✅ Complete all-time contribution calendars (every day since account creation)
+- ✅ Animated hover effects showing exact day details
+- ✅ Day-by-day contribution counts
 - ✅ Year-by-year activity progression
 - ✅ Busiest days and weeks highlighted
-- ✅ Full account activity history from day 1
+- ✅ Full account activity history
 
 <br/>
 
