@@ -4,7 +4,7 @@
 
 ## Summary
 
-* **Total Commits:** 4225 commits across all time
+* **Total Commits:** 4186 commits across all time
 * **Total Repositories:** 35 repositories
 * **Active Accounts:** 3 GitHub accounts
 
@@ -14,7 +14,7 @@
 
 * **Account Created:** 2023-05-11
 * **Years Active:** 4
-* **Total Commits:** 3048 commits
+* **Total Commits:** 3009 commits
 * **Current Year:** 845 commits
 * **Repositories:** 33
 * **Weeks of Data:** 188
