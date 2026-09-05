@@ -1,11 +1,11 @@
 # 📊 Multi-Account Aggregated Statistics
 
-**Last Updated:** 2026-09-04
+**Last Updated:** 2026-09-05
 
 ## Summary
 
-* **Total Commits:** 4295 commits across all time
-* **Total Repositories:** 35 repositories
+* **Total Commits:** 4350 commits across all time
+* **Total Repositories:** 36 repositories
 * **Active Accounts:** 3 GitHub accounts
 
 ## Account Breakdown
@@ -14,16 +14,16 @@
 
 * **Account Created:** 2023-05-11
 * **Years Active:** 4
-* **Total Commits:** 3018 commits
-* **Current Year:** 851 commits
-* **Repositories:** 33
+* **Total Commits:** 3060 commits
+* **Current Year:** 876 commits
+* **Repositories:** 34
 * **Weeks of Data:** 188
 
 ### Research & Work (@syedprog)
 
 * **Account Created:** 2025-07-08
 * **Years Active:** 2
-* **Total Commits:** 340 commits
+* **Total Commits:** 353 commits
 * **Current Year:** 189 commits
 * **Repositories:** 0
 * **Weeks of Data:** 98
@@ -41,9 +41,9 @@
 ## Top Languages
 
 * Python: 7 repositories
+* TypeScript: 5 repositories
 * Jupyter Notebook: 5 repositories
 * JavaScript: 5 repositories
-* TypeScript: 4 repositories
 * HTML: 4 repositories
 
 ---
