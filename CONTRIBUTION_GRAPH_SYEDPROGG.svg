@@ -14,29 +14,29 @@
 <rect width="1400" height="600" class="bg"/>
 
 <text x="700" y="35" class="title" text-anchor="middle">📊 Learning Projects (@syedprogg)</text>
-<text x="700" y="55" class="subtitle" text-anchor="middle">All-Time: 1869 commits (53 weeks) | Current Year: 1869 | 1y since 2026-04-27</text>
+<text x="700" y="55" class="subtitle" text-anchor="middle">All-Time: 1982 commits (53 weeks) | Current Year: 1982 | 1y since 2026-04-27</text>
 <line x1="100" y1="500" x2="1360" y2="500" class="grid-line" stroke-dasharray="2,2"/>
 <text x="90" y="504" class="axis-label" text-anchor="end">0</text>
 <line x1="100" y1="456" x2="1360" y2="456" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="460" class="axis-label" text-anchor="end">22</text>
+<text x="90" y="460" class="axis-label" text-anchor="end">26</text>
 <line x1="100" y1="412" x2="1360" y2="412" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="416" class="axis-label" text-anchor="end">44</text>
+<text x="90" y="416" class="axis-label" text-anchor="end">52</text>
 <line x1="100" y1="368" x2="1360" y2="368" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="372" class="axis-label" text-anchor="end">66</text>
+<text x="90" y="372" class="axis-label" text-anchor="end">78</text>
 <line x1="100" y1="324" x2="1360" y2="324" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="328" class="axis-label" text-anchor="end">88</text>
+<text x="90" y="328" class="axis-label" text-anchor="end">104</text>
 <line x1="100" y1="280" x2="1360" y2="280" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="284" class="axis-label" text-anchor="end">110</text>
+<text x="90" y="284" class="axis-label" text-anchor="end">130</text>
 <line x1="100" y1="236" x2="1360" y2="236" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="240" class="axis-label" text-anchor="end">132</text>
+<text x="90" y="240" class="axis-label" text-anchor="end">156</text>
 <line x1="100" y1="192" x2="1360" y2="192" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="196" class="axis-label" text-anchor="end">154</text>
+<text x="90" y="196" class="axis-label" text-anchor="end">182</text>
 <line x1="100" y1="148" x2="1360" y2="148" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="152" class="axis-label" text-anchor="end">176</text>
+<text x="90" y="152" class="axis-label" text-anchor="end">208</text>
 <line x1="100" y1="104" x2="1360" y2="104" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="108" class="axis-label" text-anchor="end">198</text>
+<text x="90" y="108" class="axis-label" text-anchor="end">234</text>
 <line x1="100" y1="60" x2="1360" y2="60" class="grid-line" stroke-dasharray="2,2"/>
-<text x="90" y="64" class="axis-label" text-anchor="end">220</text>
+<text x="90" y="64" class="axis-label" text-anchor="end">260</text>
 <line x1="100" y1="500" x2="100" y2="505" class="grid-line"/>
 <text x="100" y="520" class="axis-label" text-anchor="middle">W0</text>
 <line x1="313.96" y1="500" x2="313.96" y2="505" class="grid-line"/>
@@ -46,7 +46,7 @@
 <line x1="932.08" y1="500" x2="932.08" y2="505" class="grid-line"/>
 <text x="932.08" y="520" class="axis-label" text-anchor="middle">W35</text>
 <line x1="1146.04" y1="500" x2="1146.04" y2="505" class="grid-line"/>
-<path d="M100,500 L123.77,500 L147.55,500 L171.32,500 L195.09,500 L218.87,500 L242.64,500 L266.42,500 L290.19,500 L313.96,500 L337.74,500 L361.51,500 L385.28,500 L409.06,500 L432.83,500 L456.6,500 L480.38,500 L504.15,500 L527.92,500 L551.7,500 L575.47,500 L599.25,500 L623.02,500 L646.79,500 L670.57,500 L694.34,496 L718.11,490 L741.89,430 L765.66,350 L789.43,442 L813.21,368 L836.98,440 L860.75,420 L884.53,358 L908.3,364 L932.08,306 L955.85,342 L979.62,378 L1003.4,208 L1027.17,434 L1050.94,478 L1074.72,334 L1098.49,470 L1122.26,468 L1146.04,404 L1169.81,376 L1193.58,354 L1217.36,262 L1241.13,228 L1264.91,340 L1288.68,64 L1312.45,264 L1336.23,394" class="line"/>
+<path d="M100,500 L123.77,500 L147.55,500 L171.32,500 L195.09,500 L218.87,500 L242.64,500 L266.42,500 L290.19,500 L313.96,500 L337.74,500 L361.51,500 L385.28,500 L409.06,500 L432.83,500 L456.6,500 L480.38,500 L504.15,500 L527.92,500 L551.7,500 L575.47,500 L599.25,500 L623.02,500 L646.79,500 L670.57,500 L694.34,496.62 L718.11,491.54 L741.89,440.77 L765.66,373.08 L789.43,450.92 L813.21,388.31 L836.98,449.23 L860.75,432.31 L884.53,379.85 L908.3,384.92 L932.08,335.85 L955.85,366.31 L979.62,396.77 L1003.4,252.92 L1027.17,444.15 L1050.94,481.38 L1074.72,359.54 L1098.49,474.62 L1122.26,472.92 L1146.04,418.77 L1169.81,395.08 L1193.58,376.46 L1217.36,268.15 L1241.13,269.85 L1264.91,308.77 L1288.68,71.85 L1312.45,261.38 L1336.23,403.54" class="line"/>
 <circle cx="100" cy="500" r="4" class="point"/>
 <circle cx="123.77" cy="500" r="4" class="point"/>
 <circle cx="147.55" cy="500" r="4" class="point"/>
@@ -72,41 +72,40 @@
 <circle cx="623.02" cy="500" r="4" class="point"/>
 <circle cx="646.79" cy="500" r="4" class="point"/>
 <circle cx="670.57" cy="500" r="4" class="point"/>
-<circle cx="694.34" cy="496" r="4" class="point"/>
-<circle cx="718.11" cy="490" r="4" class="point"/>
-<circle cx="741.89" cy="430" r="4" class="point"/>
-<circle cx="765.66" cy="350" r="4" class="point"/>
-<circle cx="789.43" cy="442" r="4" class="point"/>
-<circle cx="813.21" cy="368" r="4" class="point"/>
-<text x="813.21" y="356" class="point-label" text-anchor="middle">66</text>
-<circle cx="836.98" cy="440" r="4" class="point"/>
-<circle cx="860.75" cy="420" r="4" class="point"/>
-<circle cx="884.53" cy="358" r="4" class="point"/>
-<circle cx="908.3" cy="364" r="4" class="point"/>
-<circle cx="932.08" cy="306" r="4" class="point"/>
-<circle cx="955.85" cy="342" r="4" class="point"/>
-<text x="955.85" y="330" class="point-label" text-anchor="middle">79</text>
-<circle cx="979.62" cy="378" r="4" class="point"/>
-<circle cx="1003.4" cy="208" r="4" class="point"/>
-<text x="1003.4" y="196" class="point-label" text-anchor="middle">146</text>
-<circle cx="1027.17" cy="434" r="4" class="point"/>
-<circle cx="1050.94" cy="478" r="4" class="point"/>
-<circle cx="1074.72" cy="334" r="4" class="point"/>
-<circle cx="1098.49" cy="470" r="4" class="point"/>
-<text x="1098.49" y="458" class="point-label" text-anchor="middle">15</text>
-<circle cx="1122.26" cy="468" r="4" class="point"/>
-<circle cx="1146.04" cy="404" r="4" class="point"/>
-<circle cx="1169.81" cy="376" r="4" class="point"/>
-<circle cx="1193.58" cy="354" r="4" class="point"/>
-<circle cx="1217.36" cy="262" r="4" class="point"/>
-<circle cx="1241.13" cy="228" r="4" class="point"/>
-<text x="1241.13" y="216" class="point-label" text-anchor="middle">136</text>
-<circle cx="1264.91" cy="340" r="4" class="point"/>
-<circle cx="1288.68" cy="64" r="4" class="point"/>
-<text x="1288.68" y="52" class="point-label" text-anchor="middle">218</text>
-<circle cx="1312.45" cy="264" r="4" class="point"/>
-<circle cx="1336.23" cy="394" r="4" class="point"/>
+<circle cx="694.34" cy="496.62" r="4" class="point"/>
+<circle cx="718.11" cy="491.54" r="4" class="point"/>
+<circle cx="741.89" cy="440.77" r="4" class="point"/>
+<circle cx="765.66" cy="373.08" r="4" class="point"/>
+<circle cx="789.43" cy="450.92" r="4" class="point"/>
+<circle cx="813.21" cy="388.31" r="4" class="point"/>
+<text x="813.21" y="376.31" class="point-label" text-anchor="middle">66</text>
+<circle cx="836.98" cy="449.23" r="4" class="point"/>
+<circle cx="860.75" cy="432.31" r="4" class="point"/>
+<circle cx="884.53" cy="379.85" r="4" class="point"/>
+<circle cx="908.3" cy="384.92" r="4" class="point"/>
+<circle cx="932.08" cy="335.85" r="4" class="point"/>
+<circle cx="955.85" cy="366.31" r="4" class="point"/>
+<text x="955.85" y="354.31" class="point-label" text-anchor="middle">79</text>
+<circle cx="979.62" cy="396.77" r="4" class="point"/>
+<circle cx="1003.4" cy="252.92" r="4" class="point"/>
+<circle cx="1027.17" cy="444.15" r="4" class="point"/>
+<circle cx="1050.94" cy="481.38" r="4" class="point"/>
+<circle cx="1074.72" cy="359.54" r="4" class="point"/>
+<circle cx="1098.49" cy="474.62" r="4" class="point"/>
+<text x="1098.49" y="462.62" class="point-label" text-anchor="middle">15</text>
+<circle cx="1122.26" cy="472.92" r="4" class="point"/>
+<circle cx="1146.04" cy="418.77" r="4" class="point"/>
+<circle cx="1169.81" cy="395.08" r="4" class="point"/>
+<circle cx="1193.58" cy="376.46" r="4" class="point"/>
+<circle cx="1217.36" cy="268.15" r="4" class="point"/>
+<circle cx="1241.13" cy="269.85" r="4" class="point"/>
+<text x="1241.13" y="257.85" class="point-label" text-anchor="middle">136</text>
+<circle cx="1264.91" cy="308.77" r="4" class="point"/>
+<circle cx="1288.68" cy="71.85" r="4" class="point"/>
+<text x="1288.68" y="59.85" class="point-label" text-anchor="middle">253</text>
+<circle cx="1312.45" cy="261.38" r="4" class="point"/>
+<circle cx="1336.23" cy="403.54" r="4" class="point"/>
 <line x1="100" y1="60" x2="100" y2="500" class="axis-line"/>
 <line x1="100" y1="500" x2="1360" y2="500" class="axis-line"/>
-<text x="1390" y="590" class="axis-label" text-anchor="end" font-size="11">Generated: 2026-11-06</text>
+<text x="1390" y="590" class="axis-label" text-anchor="end" font-size="11">Generated: 2026-11-07</text>
 </svg>
