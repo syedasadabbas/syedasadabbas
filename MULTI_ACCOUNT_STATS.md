@@ -1,10 +1,10 @@
 # 📊 Multi-Account Aggregated Statistics
 
-**Last Updated:** 2026-11-26
+**Last Updated:** 2026-11-27
 
 ## Summary
 
-* **Total Commits:** 6469 commits across all time
+* **Total Commits:** 6315 commits across all time
 * **Total Repositories:** 37 repositories
 * **Active Accounts:** 3 GitHub accounts
 
@@ -14,7 +14,7 @@
 
 * **Account Created:** 2023-05-11
 * **Years Active:** 4
-* **Total Commits:** 4173 commits
+* **Total Commits:** 4025 commits
 * **Current Year:** 1154 commits
 * **Repositories:** 34
 * **Weeks of Data:** 188
@@ -23,7 +23,7 @@
 
 * **Account Created:** 2025-07-08
 * **Years Active:** 2
-* **Total Commits:** 280 commits
+* **Total Commits:** 273 commits
 * **Current Year:** 150 commits
 * **Repositories:** 0
 * **Weeks of Data:** 98
@@ -32,8 +32,8 @@
 
 * **Account Created:** 2026-04-27
 * **Years Active:** 1
-* **Total Commits:** 2016 commits
-* **Current Year:** 2016 commits
+* **Total Commits:** 2017 commits
+* **Current Year:** 2017 commits
 * **Repositories:** 3
 * **Weeks of Data:** 53
 
